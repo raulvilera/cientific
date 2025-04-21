@@ -859,17 +859,29 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         </div>
     </section>
 <script>
-function toggleAulas(id) {
-    const container = document.getElementById(id);
-    if (container.style.display === "none" || container.style.display === "") {
-        container.style.display = "block";
-    } else {
-        container.style.display = "none";
+    // Alterna as aulas com classe .hidden e ativa/desativa botões
+    function toggleAulas(serieId, event) {
+        const todasAulas = document.querySelectorAll('.aulas-container');
+        const todosBotoes = document.querySelectorAll('.grade-btn');
+
+        todasAulas.forEach(el => el.classList.add('hidden'));
+        todosBotoes.forEach(btn => btn.classList.remove('active'));
+
+        const aulas = document.getElementById(serieId);
+
+        const isVisible = !aulas.classList.contains('hidden');
+
+        if (isVisible) {
+            aulas.classList.add('hidden');
+            event.target.classList.remove('active');
+        } else {
+            aulas.classList.remove('hidden');
+            event.target.classList.add('active');
+        }
     }
-}
-</script>
-    <script>
-        // Controle do Carrossel
+
+    // Carrossel básico
+    document.addEventListener('DOMContentLoaded', function () {
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
@@ -880,42 +892,7 @@ function toggleAulas(id) {
         }
 
         setInterval(nextSlide, 5000);
-
-<script>
-    function toggleAulas(serieId, event) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
-
-        todasAulas.forEach(el => el.style.display = 'none');
-        todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-        const aulas = document.getElementById(serieId);
-        if (aulas.style.display === 'block') {
-            aulas.style.display = 'none';
-            event.target.classList.remove('active');
-        } else {
-            aulas.style.display = 'block';
-            event.target.classList.add('active');
-        }
-    }
-<script src="scripts.js"></script>
-<script>
-function toggleAulas(serieId, event) {
-    const todasAulas = document.querySelectorAll('.aulas-container');
-    const todosBotoes = document.querySelectorAll('.grade-btn');
-
-    todasAulas.forEach(el => el.style.display = 'none');
-    todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-    const aulas = document.getElementById(serieId);
-    if (aulas.style.display === 'block') {
-        aulas.style.display = 'none';
-        event.target.classList.remove('active');
-    } else {
-        aulas.style.display = 'block';
-        event.target.classList.add('active');
-    }
-}
+    });
 </script>
 
 </body>
