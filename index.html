@@ -891,6 +891,49 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             slides[currentSlide].classList.add('active');
         }
 
+
+  .biblioteca-section {
+    padding: 4rem 2rem;
+    background: rgba(0,0,0,0.05);
+  }
+
+  .grades-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grade-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grade-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .grade-item h3 {
+    margin-bottom: 1rem;
+    color: var(--cor-destaque);
+  }
+
+  .bimestre-buttons {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .grade-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+
         setInterval(nextSlide, 5000);
 
 // Controle das Aulas
