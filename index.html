@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,6 @@
       --gradiente-fundo: linear-gradient(135deg, #1a1a2e, #16213e);
       --cor-texto: #ffffff;
     }
-
     * {
       margin: 0;
       padding: 0;
@@ -26,8 +25,8 @@
     }
 
     .navbar {
-      background: rgba(0,0,0,0.9);
-      padding: 1rem;
+background:rgba(0,0,0,0.9)
+            padding: 1rem;
       position: fixed;
       width: 100%;
       top: 0;
@@ -101,12 +100,13 @@
       border-radius: 10px;
       cursor: pointer;
       text-align: center;
+      text-decoration: none;
       transition: all 0.3s ease;
     }
 
     .grade-btn.active {
       background: var(--cor-destaque);
-      color: #10076C;
+      color:10076C;
     }
 
     .grade-btn:hover {
@@ -115,7 +115,6 @@
 
     .aulas-container {
       margin-top: 2rem;
-      display: none;
     }
 
     .bimestre-section {
@@ -126,10 +125,8 @@
       backdrop-filter: blur(5px);
     }
 
-    .aulas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 0.5rem;
+    .bimestre-section h3 {
+      margin-bottom: 1rem;
     }
 
     .aula {
@@ -176,6 +173,7 @@
       .nav-links {
         display: none;
       }
+
       .grade-selector {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -203,8 +201,8 @@
   <section class="series-section" id="series">
     <h2>Selecione sua Série:</h2>
     <div class="grade-selector">
-      <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
-      <button class="grade-btn" onclick="toggleAulas('7ano')">7º ANO</button>
+      <button class="grade-btn" onclick="mostrar6Ano()">6º ANO</button>
+      <button class="grade-btn" onclick="mostrar7Ano()">7º ANO</button>
       <button class="grade-btn">8º ANO</button>
       <button class="grade-btn">9º ANO</button>
       <button class="grade-btn">1ª SÉRIE EM</button>
@@ -212,183 +210,134 @@
       <button class="grade-btn">3ª SÉRIE EM</button>
     </div>
 
-    <!-- 6º Ano -->
-    <div class="aulas-container" id="6ano">
+    <div class="aulas-container" id="aulasContainer6ano" style="display:ten;">
       <div class="bimestre-section">
         <h3>1º Bimestre</h3>
-        <div class="aulas-grid">
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:543a8a6c-016d-4c3e-9866-ca11e1eca886">Aula 1</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:243fc47c-7bbe-4b24-a7f9-222da686bdd7">Aula 2</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2cc946f9-81d5-4e62-b836-db4007aa7278">Aula 3</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fd4a0668-9589-4376-aed4-6488e5692e38">Aula 4</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:93e91a60-a6e9-401c-924d-d17a650c1154">Aula 5</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:616d7bb3-7aa3-4b2d-910d-707248465fa4">Aula 6</a></div>
-          https://acrobat.adobe.com/id/urn:aaid:sc:US:9702d929-91de-4c80-96b5-2c6388cfdc27">Aula 7</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118737/1012415.pdf">Aula 8</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118738/1012439.pdf">Aula 9</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118739/1013057.pdf">Aula 10</a></div>
-        </div>
+      <div class="aulas-grid">
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118723/1011683.pdf">Aula 1</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118727/1011689.pdf">Aula 2</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118728/1011698.pdf">Aula 3</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118730/1012473.pdf">Aula 4</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118733/1012498.pdf">Aula 5</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118734/1012529.pdf">Aula 6</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118735/1012400.pdf">Aula 7</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118737/1012415.pdf">Aula 8</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118738/1012439.pdf">Aula 9</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118739/1013057.pdf">Aula 10</a></div>
       </div>
 
-      <div class="bimestre-section">
         <h3>2º Bimestre</h3>
-        <div class="aulas-grid">
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122429/1141204.pdf">Aula 1</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122430/1151055.pdf">Aula 2</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122432/1018066.pdf">Aula 3</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122433/1018579.pdf">Aula 4</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122434/1019139.pdf">Aula 5</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122435/1019158.pdf">Aula 6</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122436/1157935.pdf">Aula 7</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122437/1023441.pdf">Aula 8</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122438/1002725.pdf">Aula 9</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122439/1002756.pdf">Aula 10</a></div>
-        </div>
+<div class="aulas-container" id="aulasContainer6ano" style="display:none;">
+      <div class="bimestre-section">
+      <div class="aulas-grid">
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122429/1141204.pdf">Aula 1</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122430/1151055.pdf">Aula 2</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122432/1018066.pdf">Aula 3</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122433/1018579.pdf">Aula 4</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122434/1019139.pdf">Aula 5</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122435/1019158.pdf">Aula 6</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122436/1157935.pdf">Aula 7</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122437/1023441.pdf">Aula 8</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122438/1002725.pdf">Aula 9</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122439/1002756.pdf">Aula 10</a></div>
       </div>
     </div>
 
-    <!-- 7º Ano -->
-    <div class="aulas-container" id="7ano">
+    <!-- Aulas do 7º ano -->
+    <div class="aulas-container" id="aulasContainer7ano" style="display:none;">
       <div class="bimestre-section"> 
         <h3>1º Bimestre</h3>
-        <div class="aulas-grid">
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6e8076c0-ac01-40e2-9b6c-e8aa1eaf6435">Aula 1</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fcf6aa58-8840-4976-9bcd-6132c79ebe89">Aula 2</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:535d257c-a46c-4e0d-9f28-f90b96dffc91">Aula 3</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:087f9771-2a6b-45d9-9910-90698b439394">Aula 4</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:5cb3cadc-de1f-42a1-bf2e-5d37b01f1fe9">Aula 5</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:cc52a425-6add-4282-91d4-e3b3bb62ce1f">Aula 6</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f68d19a7-62c0-4ab6-91f3-3db71a733114">Aula 7</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:98656f63-7a90-4dec-b2a5-3beb69c90bda">Aula 8</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:bb0e048f-5f9c-4973-908c-20383084ab4f">Aula 9</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d7a121e3-d0d4-410c-8a03-0dffa7af2df0">Aula 10</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da0bd46b-bf20-46b5-99ba-a1da15d88333">Aula 11</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4b8080a3-2784-44f2-b664-0c2db4fcbc4e">Aula 12</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f13f5dd5-6194-432b-9e10-8017a8b61338">Aula 13</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fe578b76-3511-4b14-8c47-1af6017c6c55">Aula 14</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c4df0cff-a0e2-484d-be59-7ea928044889">Aula 15</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f0ced7d8-6525-4f9e-a142-d3e1e1b8e6c7">Aula 16</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:889e8d87-cce1-461c-aeb4-af55ef673b47">Aula 17</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d4268978-aed0-483c-80b8-53c9342109d3">Aula 18</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9dcef14a-b172-48c1-a446-b1b71322d8b2">Aula 19</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6d9be948-0c7b-4884-a9a8-04061115fecd">Aula 20</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:dc9c60fb-962c-4d5f-91c9-9eba12bb7b4f">Aula 21</a></div>
-        </div>
+      <div class="aulas-grid">
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6e8076c0-ac01-40e2-9b6c-e8aa1eaf6435">Aula 1</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fcf6aa58-8840-4976-9bcd-6132c79ebe89">Aula 2</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:535d257c-a46c-4e0d-9f28-f90b96dffc91">Aula 3</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:087f9771-2a6b-45d9-9910-90698b439394">Aula 4</a></div>
+<div clas ,,s="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:5cb3cadc-de1f-42a1-bf2e-5d37b01f1fe9">Aula 5</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:cc52a425-6add-4282-91d4-e3b3bb62ce1f">Aula 6</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f68d19a7-62c0-4ab6-91f3-3db71a733114">Aula 7</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:98656f63-7a90-4dec-b2a5-3beb69c90bda">Aula 8</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:bb0e048f-5f9c-4973-908c-20383084ab4f">Aula 9</a></div>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d7a121e3-d0d4-410c-8a03-0dffa7af2df0">Aula 10</a></div>
       </div>
-
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da0bd46b-bf20-46b5-99ba-a1da15d88333">Aula 11</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4b8080a3-2784-44f2-b664-0c2db4fcbc4e">Aula 12</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f13f5dd5-6194-432b-9e10-8017a8b61338">Aula 13</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fe578b76-3511-4b14-8c47-1af6017c6c55">Aula 14</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c4df0cff-a0e2-484d-be59-7ea928044889">Aula 15</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f0ced7d8-6525-4f9e-a142-d3e1e1b8e6c7">Aula 16</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:889e8d87-cce1-461c-aeb4-af55ef673b47">Aula 17</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d4268978-aed0-483c-80b8-53c9342109d3">Aula 18</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9dcef14a-b172-48c1-a446-b1b71322d8b2">Aula 19</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6d9be948-0c7b-4884-a9a8-04061115fecd">Aula 20</a></div>
+      </div>
+</div>
+<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:dc9c60fb-962c-4d5f-91c9-9eba12bb7b4f">Aula 21</a></div>
+      </div>
       <div class="bimestre-section">
         <h3>2º Bimestre</h3>
-        <div class="aulas-grid">
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122444/1025674.pdf">Aula 1</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122445/1025678.pdf">Aula 2</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122446/1025683.pdf">Aula 3</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122447/1025689.pdf">Aula 4</a></div> 
-<div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122448/1025694.pdf">Aula 5</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122449/1025700.pdf">Aula 6</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122450/1025706.pdf">Aula 7</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122451/1025711.pdf">Aula 8</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122452/1025717.pdf">Aula 9</a></div>
-          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122453/1025723.pdf">Aula 10</a></div>
-        </div>
+     <div class="aulas-grid">
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122444/1025674.pdf">Aula 1</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122445/1025678.pdf">Aula 2</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122446/1025683.pdf">Aula 3</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122447/1025689.pdf">Aula 4</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122448/1025694.pdf">Aula 5</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122449/1025700.pdf">Aula 6</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122450/1025706.pdf">Aula 7</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122451/1025711.pdf">Aula 8</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122452/1025717.pdf">Aula 9</a></div>
+        <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122453/1025723.pdf">Aula 10</a></div>
       </div>
     </div>
   </section>
 
- <!-- Adicione isto após a seção de séries e antes da seção de plataformas -->
-<section class="biblioteca-section" id="apostilas">
-  <center><h2>BIBLIOTECA</h2><center>
-  <div class="grades-container">
-    <!-- Primeira Linha -->
-    <div class="grade-row">
-      <div class="grade-item">
-        <h3>6º ANO</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7807939a-2265-40c8-8c28-9b859302b85d" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b29c81a6-3c8c-475b-937d-8767f87e2e0e" class="grade-btn">2° Bimestre</a>
-        </div>
+  <section class="plataformas-section" id="plataformas">
+    <h2>Plataformas de Aprendizado</h2>
+    <div class="plataformas-grid">
+      <div class="plataforma-card">
+        <h3>Plataforma 1</h3>
+        <p>Descrição breve da plataforma.</p>
       </div>
-      <div class="grade-item">
-        <h3>7º ANO</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:98e6f9c4-2e6a-4c72-8e37-7b1f82b3ce4b" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:46bd04f6-cb01-4cf0-938b-b6450ba33e0d" class="grade-btn">2° Bimestre</a>
-        </div>
+      <div class="plataforma-card">
+        <h3>Plataforma 2</h3>
+        <p>Descrição breve da plataforma.</p>
       </div>
-      <div class="grade-item">
-        <h3>8º ANO</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:36828267-c7c1-412f-b0bd-7ab06b8162e8" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:3be143e7-afd5-43a2-ad80-a30c2ae9db1a" class="grade-btn">2° Bimestre</a>
-        </div>
+      <div class="plataforma-card">
+        <h3>Plataforma 3</h3>
+        <p>Descrição breve da plataforma.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Segunda Linha -->
-    <div class="grade-row">
-      <div class="grade-item">
-        <h3>9º ANO</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:918955ed-5bae-4056-af32-1f4f43bb1389" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:28d455c5-1952-41a5-bb50-faaf6b5bebd0" class="grade-btn">2° Bimestre</a>
-        </div>
-      </div>
-      <div class="grade-item">
-        <h3>1ª SÉRIE</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da5e10c3-54f9-4556-8730-dc64d3170ab0" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9c3c17de-0735-4d95-9ef2-82d499b0c3d4" class="grade-btn">2° Bimestre</a>
-        </div>
-      </div>
-      <div class="grade-item">
-        <h3>2ª SÉRIE</h3>
-        <div class="bimestre-buttons">
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d737796f-6eb5-4c99-8b56-67582a2aa996" class="grade-btn">1° Bimestre</a>
-          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da5e10c3-54f9-4556-8730-dc64d3170ab0" class="grade-btn">2° Bimestre</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Adicione isto no CSS -->
-<style>
-  .biblioteca-section {
-    padding: 4rem 2rem;
-    background: rgba(0,0,0,0.05);
-  }
-
-  .grades-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .grade-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .grade-item {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .grade-item h3 {
-    margin-bottom: 1rem;
-    color: var(--cor-destaque);
-  }
-
-  .bimestre-buttons {
-    display: grid;
-    gap: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .grade-row {
-      grid-template-columns: 1fr;
+  <script>
+    function mostrar6Ano() {
+      const container = document.getElementById("aulasContainer6ano");
+      container.style.display = container.style.display === "none" ? "block" : "none";
     }
-  }
-</style>
+
+    function mostrar7Ano() {
+      const container = document.getElementById("aulasContainer7ano");
+      container.style.display = container.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>
+
+
