@@ -802,7 +802,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
 
         // Fechar aulas ao clicar fora
-        document.addEventListener('click', function(event) {
+   <script>  document.addEventListener('click', function(event) {
             if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
                 document.querySelectorAll('.aulas-container').forEach(container => {
                     container.style.display = 'none';
