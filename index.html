@@ -1014,7 +1014,7 @@ function toggleAulas(serie) {
         event.target.classList.add('active');
     }
 }
-<script>
+
         // Fechar aulas ao clicar fora
      <script>   document.addEventListener('click', function(event) {
             if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
@@ -1023,8 +1023,7 @@ function toggleAulas(serie) {
                 });
             }
         });
-    </script>
-<script>
+    
 function toggleAulas(id, event) {
     // Remove classe 'active' de todos os botões
     document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
