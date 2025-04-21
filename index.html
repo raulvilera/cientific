@@ -379,16 +379,20 @@ se<!DOCTYPE html>
     <section class="series-section" id="series">
         <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
    <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+    <<!-- Botões -->
+<button onclick="toggleAulas('6ano')">6°ANO</button>
+<button onclick="toggleAulas('7ano')">7°ANO</button>
+<button onclick="toggleAulas('8ano')">8°ANO</button>
+<button onclick="toggleAulas('9ano')">9°ANO</button>
+<button onclick="toggleAulas('1serie')">1ªSÉRIE E.M</button>
+<button onclick="toggleAulas('2serie')">2ªSÉRIE E.M</button>
+<button onclick="toggleAulas('3serie')">3ªSÉRIE E.M</button>
+
+<!-- Exemplo de aulas (para o 9º ano) -->
+<div class="aulas-container" id="9ano" style="display: none;">
+    <!-- conteúdo das aulas do 9º ano -->
 </div>
-
-
+</div>
 
 <!-- Conteúdo extra oculto -->
 <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
@@ -832,7 +836,16 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             </div>
         </div>
     </section>
-
+<script>
+function toggleAulas(id) {
+    const container = document.getElementById(id);
+    if (container.style.display === "none" || container.style.display === "") {
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
+    }
+}
+</script>
     <script>
         // Controle do Carrossel
         let currentSlide = 0;
