@@ -376,7 +376,7 @@ DOCTYPE html>
         </div>
     </section>
 
-    <<section class="series-section" id="series">
+   section class="series-section" id="series">
   <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
   <div class="grade-selector">
     <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
@@ -390,28 +390,27 @@ DOCTYPE html>
 </section>
 
 <!-- Blocos de aulas -->
-<div id="6ano" class="aulas" style="display: none;">Aulas do 6º Ano</div>
-<div id="7ano" class="aulas" style="display: none;">Aulas do 7º Ano</div>
-<div id="8ano" class="aulas" style="display: none;">Aulas do 8º Ano</div>
-<div id="9ano" class="aulas" style="display: none;">Aulas do 9º Ano</div>
-<div id="1serie" class="aulas" style="display: none;">Aulas da 1ª Série</div>
-<div id="2serie" class="aulas" style="display: none;">Aulas da 2ª Série</div>
-<div id="3serie" class="aulas" style="display: none;">Aulas da 3ª Série</div>
+<div id="6ano" class="aulas">Aulas do 6º Ano</div>
+<div id="7ano" class="aulas">Aulas do 7º Ano</div>
+<div id="8ano" class="aulas">Aulas do 8º Ano</div>
+<div id="9ano" class="aulas">Aulas do 9º Ano</div>
+<div id="1serie" class="aulas">Aulas da 1ª Série</div>
+<div id="2serie" class="aulas">Aulas da 2ª Série</div>
+<div id="3serie" class="aulas">Aulas da 3ª Série</div>
 
 <script>
   function toggleAulas(id) {
-    // Esconde todos os blocos de aula
-    const allAulas = document.querySelectorAll('.aulas');
-    allAulas.forEach(el => el.style.display = 'none');
-    
-    // Mostra o bloco correspondente
-    const selected = document.getElementById(id);
-    if (selected) {
-      selected.style.display = 'block';
+    // Esconde todos os blocos
+    document.querySelectorAll('.aulas').forEach(el => {
+      el.style.display = 'none';
+    });
+
+    // Mostra o bloco selecionado
+    const bloco = document.getElementById(id);
+    if (bloco) {
+      bloco.style.display = 'block';
     }
   }
-</script>
-
 
         <<!-- Aulas do 6º ano -->
     <div class="aulas-container" id="aulasContainer6ano" style="display:none;">
