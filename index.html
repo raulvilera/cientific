@@ -842,36 +842,24 @@ function toggleAulas(id) {
 
         setInterval(nextSlide, 5000);
 
-// Controle das Aulas
-        function toggleAulas(serie) {
-    const activeContainer = document.getElementById(serie);
-    const isVisible = activeContainer.style.display === 'block';
+<script>
+    function toggleAulas(serieId, event) {
+        const todasAulas = document.querySelectorAll('.aulas-container');
+        const todosBotoes = document.querySelectorAll('.grade-btn');
 
-    // Esconde todos os containers e remove a classe active dos botões
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
+        todasAulas.forEach(el => el.style.display = 'none');
+        todosBotoes.forEach(btn => btn.classList.remove('active'));
 
-    // Se o container clicado não estava visível, mostra ele e adiciona classe active
-    if (!isVisible) {
-        activeContainer.style.display = 'block';
-        event.target.classList.add('active');
+        const aulas = document.getElementById(serieId);
+        if (aulas.style.display === 'block') {
+            aulas.style.display = 'none';
+            event.target.classList.remove('active');
+        } else {
+            aulas.style.display = 'block';
+            event.target.classList.add('active');
+        }
     }
-}
-
-
-        // Fechar aulas ao clicar fora
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-                document.querySelectorAll('.aulas-container').forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
-        });
-    </script>
+</script>
 
 </body>
 </html>
