@@ -1,464 +1,394 @@
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIÊNCI@SNANET - Plataforma Educacional</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --cor-destaque: #00ff88;
-            --gradiente-fundo: linear-gradient(135deg, #1a1a2e, #16213e);
-            --cor-texto: #ffffff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciências Web - Plataforma Educacional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --cor-destaque: #00ff88;
+      --gradiente-fundo: linear-gradient(135deg, #1a1a2e, #16213e);
+      --cor-texto: #ffffff;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        body {
-            background: var(--gradiente-fundo);
-            color: var(--cor-texto);
-            line-height: 1.6;
-        }
+    body {
+      background: var(--gradiente-fundo);
+      color: var(--cor-texto);
+      line-height: 1.6;
+    }
 
-        /* Abas Científicas Corrigidas */
-        .ciencia-abas {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px 20px;
-            background: rgba(0,0,0,0.7);
-        }
+    .navbar {
+      background: rgba(0,0,0,0.9);
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .ciencia-aba {
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--cor-destaque);
-            padding: 10px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 1px solid var(--cor-destaque);
-            backdrop-filter: blur(5px);
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
 
-        .ciencia-aba:hover {
-            background: var(--cor-destaque);
-            color: #1a1a2e;
-            transform: translateY(-3px);
-        }
+    .navbar a {
+      color: var(--cor-destaque);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
 
-        @media (max-width: 768px) {
-            .ciencia-abas {
-                top: 60px;
-                gap: 5px;
-                padding: 8px 15px;
-            }
+    .navbar a:hover {
+      text-shadow: 0 0 10px var(--cor-destaque);
+    }
 
-            .ciencia-aba {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-        }
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 60px;
+      background: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d') center/cover;
+      position: relative;
+    }
 
-        .navbar {
-            background: rgba(0,0,0,0.9);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
 
-        .navbar a {
-            color: var(--cor-destaque);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
+    .series-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .navbar a:hover {
-            text-shadow: 0 0 10px var(--cor-destaque);
-        }
+    .grade-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
 
-        /* Carrossel */
-        .hero-carousel {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            margin-top: 60px;
-        }
+    .grade-btn {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid var(--cor-destaque);
+      color: var(--cor-texto);
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
 
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            animation: slide 25s infinite;
-        }
+    .grade-btn.active {
+      background: var(--cor-destaque);
+      color: #10076C;
+    }
 
-        .carousel-slide.active {
-            opacity: 1;
-        }
+    .grade-btn:hover {
+      transform: translateY(-3px);
+    }
 
-        .carousel-slide:nth-child(1) { animation-delay: 0s; }
-        .carousel-slide:nth-child(2) { animation-delay: 5s; }
-        .carousel-slide:nth-child(3) { animation-delay: 10s; }
-        .carousel-slide:nth-child(4) { animation-delay: 15s; }
-        .carousel-slide:nth-child(5) { animation-delay: 20s; }
+    .aulas-container {
+      margin-top: 2rem;
+      display: none;
+    }
 
-        @keyframes slide {
-            0%, 20% { opacity: 1; }
-            25%, 100% { opacity: 0; }
-        }
+    .bimestre-section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      backdrop-filter: blur(5px);
+    }
 
-        .slide-caption {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.7);
-            padding: 0.75rem;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-            animation: fadeInOut 5s infinite;
-            z-index: 2;
-        }
+    .aulas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+    }
 
-        .slide-caption h2 {
-            color: var(--cor-destaque);
-            margin-bottom: 0.5rem;
-        }
+    .aula {
+      margin: 8px 0;
+    }
 
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; }
-            10%, 90% { opacity: 1; }
-        }
+    .aula a {
+      display: inline-block;
+      padding: 10px 18px;
+      background-color: var(--cor-destaque);
+      color: #1a1a2e;
+      text-decoration: none;
+      font-size: 15px;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
 
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 2;
-            width: 100%;
-        }
+    .plataformas-section {
+      padding: 4rem 2rem;
+      background: rgba(0,0,0,0.1);
+    }
 
-        /* Seção de Séries */
-        .series-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .plataformas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .grade-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
+    .plataforma-card {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
 
-        .grade-btn {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--cor-destaque);
-            color: var(--cor-texto);
-            padding: 0.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            min-height: 40px;
-        }
+    .plataforma-card:hover {
+      transform: translateY(-10px);
+    }
 
-        .grade-btn.active {
-            background: var(--cor-destaque);
-            color: #1a1a2e;
-        }
-
-        .grade-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .aulas-container {
-            margin-top: 2rem;
-            display: none;
-        }
-
-        .bimestre-section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 18px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            backdrop-filter: blur(5px);
-        }
-
-        .aulas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.3rem;
-        }
-
-        .aula a {
-            display: inline-block;
-            padding: 10px 18px;
-            background-color: var(--cor-destaque);
-            color: #1a1a2e;
-            text-decoration: none;
-            font-size: 15px;
-            border-radius: 10px;
-            transition: background-color 0.3s;
-        }
-
-        /* Biblioteca */
-        .biblioteca-section {
-            padding: 0.4rem 0.6rem;
-            background: rgba(0,0,0,0.05);
-        }
-
-        .grades-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .grade-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 0rem;
-            margin-bottom: 2rem;
-        }
-
-        .grade-item {
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 0.75rem;
-            text-align: center;
-        }
-
-        .grade-item h3 {
-            margin-bottom: 1rem;
-            color: var(--cor-destaque);
-        }
-
-        .bimestre-buttons {
-            display: grid;
-            gap: 0rem;
-        }
-
-        /* Plataformas */
-        .plataformas-section {
-            padding: 4rem 2rem;
-            background: rgba(0,0,0,0.1);
-        }
-
-        .plataformas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .plataforma-card {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .plataforma-card:hover {
-            transform: translateY(-10px);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .grade-selector {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .grade-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .grade-selector {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Abas Científicas -->
-    <div class="ciencia-abas">
-        <a href="https://www.sciencemag.org/" class="ciencia-aba" target="_blank">Science Magazine</a>
-        <a href="https://www.nature.com/" class="ciencia-aba" target="_blank">Nature</a>
-        <a href="https://www.scientificamerican.com/" class="ciencia-aba" target="_blank">Scientific American</a>
-        <a href="https://www.sciencedaily.com/" class="ciencia-aba" target="_blank">Science Daily</a>
-        <a href="https://www.nasa.gov/" class="ciencia-aba" target="_blank">NASA</a>
-        <a href="https://www.nobelprize.org/" class="ciencia-aba" target="_blank">Prêmio Nobel</a>
+  <nav class="navbar">
+    <h2>Ciências Web</h2>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#series">Séries</a>
+      <a href="#apostilas">Apostilas</a>
+      <a href="#plataformas">Plataformas</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Ciências para Todos</h1>
+      <p>Plataforma educacional integrada com o currículo paulista</p>
+    </div>
+  </section>
+
+  <section class="series-section" id="series">
+    <h2>Selecione sua Série:</h2>
+    <div class="grade-selector">
+      <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
+      <button class="grade-btn" onclick="toggleAulas('7ano')">7º ANO</button>
+      <button class="grade-btn">8º ANO</button>
+      <button class="grade-btn">9º ANO</button>
+      <button class="grade-btn">1ª SÉRIE EM</button>
+      <button class="grade-btn">2ª SÉRIE EM</button>
+      <button class="grade-btn">3ª SÉRIE EM</button>
     </div>
 
-    <nav class="navbar">
-        <h2>Ciências Web</h2>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#series">Séries</a>
-            <a href="#apostilas">Apostilas</a>
-            <a href="#plataformas">Plataformas</a>
-        </div>
-    </nav>
-
-    <!-- Restante do conteúdo original preservado -->
-    <section id="home">
-        <div class="hero-carousel">
-            <div class="carousel-slide active" data-slide="1" 
-                 style="background-image: url('https://images.unsplash.com/photo-1419064642531-e575728395f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-                <div class="slide-caption">
-                    <h2>Novidades na Física Quântica</h2>
-                    <p>Descobertas recentes em computação quântica e suas aplicações práticas</p>
-                </div>
-            </div>
-            <div class="carousel-slide" data-slide="2" 
-                 style="background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-                <div class="slide-caption">
-                    <h2>Biotecnologia Avançada</h2>
-                    <p>Novas técnicas de edição genética e suas implicações na medicina</p>
-                </div>
-            </div>
-            <div class="carousel-slide" data-slide="3" 
-                 style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-                <div class="slide-caption">
-                    <h2>Energias Renováveis</h2>
-                    <p>Últimos avanços em tecnologia solar e eólica para sustentabilidade</p>
-                </div>
-            </div>
-            <div class="carousel-slide" data-slide="4" 
-                 style="background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80')">
-                <div class="slide-caption">
-                    <h2>Exploração Espacial</h2>
-                    <p>Novas missões tripuladas e descobertas em astrobiologia</p>
-                </div>
-            </div>
-            <div class="carousel-slide" data-slide="5" 
-                 style="background-image: url('https://images.unsplash.com/photo-1554475901-4538ddfbccc2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80')">
-                <div class="slide-caption">
-                    <h2>Neurociência Moderna</h2>
-                    <p>Mapeamento cerebral e avanços no entendimento da consciência</p>
-                </div>
-            </div>
-        </div>
-        <div class="hero-content">
-            <h1>Ciências para Todos</h1>
-            <p>Plataforma educacional integrada com o currículo paulista</p>
-        </div>
-    </section>
-
-    <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
-
-
-
-<!-- Conteúdo extra oculto -->
-<div id="mais-6ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 6º ano</div>
-<div id="mais-7ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 7º ano</div>
-<div id="mais-8ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 8º ano</div>
-<div id="mais-9ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 9º ano</div>
-<div id="mais-1serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 1ª série</div>
-<div id="mais-2serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 2ª série</div>
-<div id="mais-3serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 3ª série</div>
-
-
-        <!-- 6º Ano -->
-<div class="aulas-container" id="6ano">
-    <div class="bimestre-section">
+    <!-- 6º Ano -->
+    <div class="aulas-container" id="6ano">
+      <div class="bimestre-section">
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
-            <!-- Aulas 6º Ano 1º Bimestre -->
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:bf90a1b7-fc42-4f4a-8954-e4d8d300c4fd" target="_blank">Aula 1</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:501cff6e-38f3-4c83-910f-aed3b9572f53" target="_blank">Aula 2</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:1182de8a-0e36-44e3-a898-5b35e647f10c" target="_blank">Aula 3</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:27ba75ed-6666-4623-8719-5e9efdab0668" target="_blank">Aula 4</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b5db86d8-7ae8-4267-af64-4ff3fc8e628b" target="_blank">Aula 5</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7cdd45aa-0321-4587-8efb-0988f47810a8" target="_blank">Aula 6</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c5ace53d-45c3-4457-b7d5-8118218f626e" target="_blank">Aula 7</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:a95ff5c9-fe1d-47cf-8d3e-f4f5578a3f53" target="_blank">Aula 8</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:bed3cd30-9db8-45ef-b0cf-7387a05998c2" target="_blank">Aula 9</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b0ce7189-552f-4662-a2e1-2baef9dbabca" target="_blank">Aula 10</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:146b8398-fe3e-487f-8d12-e2ea11a65a26" target="_blank">Aula 11</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:1eb3ad8b-aca1-42c6-9590-567ece51a8c0" target="_blank">Aula 12</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:73e3fd6e-95e0-45d6-bac4-4fb08724228f" target="_blank">Aula 13</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6176cf4f-c2eb-4d1f-a42b-a56918cc56ae" target="_blank">Aula 14</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d8f94d99-4f03-4385-b43e-628710bed84b" target="_blank">Aula 15</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:58526304-aa09-4074-9052-03050cc54fdc" target="_blank">Aula 16</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:14d73e1a-4f71-4a76-af61-6ad601a4899e" target="_blank">Aula 17</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c1230860-0709-42d0-8caa-22faa1527c20" target="_blank">Aula 18</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:196eb969-c964-499b-ace5-8b8bcab419b7" target="_blank">Aula 19</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:decdadd1-f68d-414f-938a-316152108155" target="_blank">Aula 20</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4aa579bd-f66b-4d15-947d-e993a90fb664" target="_blank">Aula 21</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:543a8a6c-016d-4c3e-9866-ca11e1eca886">Aula 1</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:243fc47c-7bbe-4b24-a7f9-222da686bdd7">Aula 2</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2cc946f9-81d5-4e62-b836-db4007aa7278">Aula 3</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fd4a0668-9589-4376-aed4-6488e5692e38">Aula 4</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:93e91a60-a6e9-401c-924d-d17a650c1154">Aula 5</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:616d7bb3-7aa3-4b2d-910d-707248465fa4">Aula 6</a></div>
+          https://acrobat.adobe.com/id/urn:aaid:sc:US:9702d929-91de-4c80-96b5-2c6388cfdc27">Aula 7</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118737/1012415.pdf">Aula 8</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118738/1012439.pdf">Aula 9</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/118739/1013057.pdf">Aula 10</a></div>
         </div>
-    </div>
+      </div>
 
-    <div class="bimestre-section">
+      <div class="bimestre-section">
         <h3>2º Bimestre</h3>
         <div class="aulas-grid">
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:e8515008-3af8-4adf-8673-39c99138ff44" target="_blank">Aula 1</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:69fb15bb-9335-4c1e-8511-c22a3701d4b0" target="_blank">Aula 2</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:e432377f-bf83-4fa2-95ed-414b95c616ea" target="_blank">Aula 3</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4b87e341-8453-4916-ab98-284152af5d8c" target="_blank">Aula 4</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:e1fe30b7-50e2-4ea6-8d24-652b6dff7d57" target="_blank">Aula 5</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:23763059-e602-48ac-b44f-72434888da19" target="_blank">Aula 6</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:e6544f70-a793-4833-88c0-6126be00eb59" target="_blank">Aula 7</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:a27cbaa1-fa27-494d-a43d-5e9522ccc81b" target="_blank">Aula 8</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:a9f5a52d-f5ef-4431-8ee4-c83c83cd75c5" target="_blank">Aula 9</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7e4bd8ee-a64f-4c1e-95a1-1101c98e85d4" target="_blank">Aula 10</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:380ab8e4-7702-4e18-baf1-9c29f873db6a" target="_blank">Aula 11</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fd00341e-65fe-45a2-8e4e-e0e950ca679a" target="_blank">Aula 12</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:1adbba2a-e451-4d43-98e7-2a2633b8b64f" target="_blank">Aula 13</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:61c3ad80-ca01-4fe2-b0c8-d8bd6b90587e" target="_blank">Aula 14</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:559e8ae7-203e-479e-929f-9c5d67080495" target="_blank">Aula 15</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2a2292bc-8649-46ec-8948-edffd971774a" target="_blank">Aula 16</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:cd2fc92f-1123-4f2a-8faf-52126a6c43c0" target="_blank">Aula 17</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:691bdc7b-ecc9-45d2-b18a-42b7bd53b52f" target="_blank">Aula 18</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:75f580f3-d878-49a4-a7ce-e8238b3ba1ab" target="_blank">Aula 19</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c933a67a-ff41-4619-b634-f1d93df7f8e1" target="_blank">Aula 20</a></div>
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:229acada-43b9-4b72-b6a5-ca3c191dcf4e" target="_blank">Aula 21</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122429/1141204.pdf">Aula 1</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122430/1151055.pdf">Aula 2</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122432/1018066.pdf">Aula 3</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122433/1018579.pdf">Aula 4</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122434/1019139.pdf">Aula 5</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122435/1019158.pdf">Aula 6</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122436/1157935.pdf">Aula 7</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122437/1023441.pdf">Aula 8</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122438/1002725.pdf">Aula 9</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122439/1002756.pdf">Aula 10</a></div>
         </div>
+      </div>
     </div>
-</div>
-
 
     <!-- 7º Ano -->
     <div class="aulas-container" id="7ano">
       <div class="bimestre-section"> 
+        <h3>1º Bimestre</h3>
+        <div class="aulas-grid">
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6e8076c0-ac01-40e2-9b6c-e8aa1eaf6435">Aula 1</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fcf6aa58-8840-4976-9bcd-6132c79ebe89">Aula 2</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:535d257c-a46c-4e0d-9f28-f90b96dffc91">Aula 3</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:087f9771-2a6b-45d9-9910-90698b439394">Aula 4</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:5cb3cadc-de1f-42a1-bf2e-5d37b01f1fe9">Aula 5</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:cc52a425-6add-4282-91d4-e3b3bb62ce1f">Aula 6</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f68d19a7-62c0-4ab6-91f3-3db71a733114">Aula 7</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:98656f63-7a90-4dec-b2a5-3beb69c90bda">Aula 8</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:bb0e048f-5f9c-4973-908c-20383084ab4f">Aula 9</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d7a121e3-d0d4-410c-8a03-0dffa7af2df0">Aula 10</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da0bd46b-bf20-46b5-99ba-a1da15d88333">Aula 11</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4b8080a3-2784-44f2-b664-0c2db4fcbc4e">Aula 12</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f13f5dd5-6194-432b-9e10-8017a8b61338">Aula 13</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:fe578b76-3511-4b14-8c47-1af6017c6c55">Aula 14</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c4df0cff-a0e2-484d-be59-7ea928044889">Aula 15</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f0ced7d8-6525-4f9e-a142-d3e1e1b8e6c7">Aula 16</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:889e8d87-cce1-461c-aeb4-af55ef673b47">Aula 17</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d4268978-aed0-483c-80b8-53c9342109d3">Aula 18</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9dcef14a-b172-48c1-a446-b1b71322d8b2">Aula 19</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6d9be948-0c7b-4884-a9a8-04061115fecd">Aula 20</a></div>
+          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:dc9c60fb-962c-4d5f-91c9-9eba12bb7b4f">Aula 21</a></div>
+        </div>
+      </div>
+
+      <div class="bimestre-section">
+        <h3>2º Bimestre</h3>
+        <div class="aulas-grid">
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122444/1025674.pdf">Aula 1</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122445/1025678.pdf">Aula 2</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122446/1025683.pdf">Aula 3</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122447/1025689.pdf">Aula 4</a></div> 
+<div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122448/1025694.pdf">Aula 5</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122449/1025700.pdf">Aula 6</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122450/1025706.pdf">Aula 7</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122451/1025711.pdf">Aula 8</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122452/1025717.pdf">Aula 9</a></div>
+          <div class="aula"><a href="https://acervocmsp.educacao.sp.gov.br/122453/1025723.pdf">Aula 10</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Adicione isto após a seção de séries e antes da seção de plataformas -->
+<section class="biblioteca-section" id="apostilas">
+  <center><h2>BIBLIOTECA</h2><center>
+  <div class="grades-container">
+    <!-- Primeira Linha -->
+    <div class="grade-row">
+      <div class="grade-item">
+        <h3>6º ANO</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7807939a-2265-40c8-8c28-9b859302b85d" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b29c81a6-3c8c-475b-937d-8767f87e2e0e" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+      <div class="grade-item">
+        <h3>7º ANO</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:98e6f9c4-2e6a-4c72-8e37-7b1f82b3ce4b" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:46bd04f6-cb01-4cf0-938b-b6450ba33e0d" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+      <div class="grade-item">
+        <h3>8º ANO</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:36828267-c7c1-412f-b0bd-7ab06b8162e8" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:3be143e7-afd5-43a2-ad80-a30c2ae9db1a" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segunda Linha -->
+    <div class="grade-row">
+      <div class="grade-item">
+        <h3>9º ANO</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:918955ed-5bae-4056-af32-1f4f43bb1389" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:28d455c5-1952-41a5-bb50-faaf6b5bebd0" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+      <div class="grade-item">
+        <h3>1ª SÉRIE</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da5e10c3-54f9-4556-8730-dc64d3170ab0" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9c3c17de-0735-4d95-9ef2-82d499b0c3d4" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+      <div class="grade-item">
+        <h3>2ª SÉRIE</h3>
+        <div class="bimestre-buttons">
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d737796f-6eb5-4c99-8b56-67582a2aa996" class="grade-btn">1° Bimestre</a>
+          <a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:da5e10c3-54f9-4556-8730-dc64d3170ab0" class="grade-btn">2° Bimestre</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Adicione isto no CSS -->
+<style>
+  .biblioteca-section {
+    padding: 4rem 2rem;
+    background: rgba(0,0,0,0.05);
+  }
+
+  .grades-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grade-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grade-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .grade-item h3 {
+    margin-bottom: 1rem;
+    color: var(--cor-destaque);
+  }
+
+  .bimestre-buttons {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .grade-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
