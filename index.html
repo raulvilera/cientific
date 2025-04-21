@@ -751,22 +751,35 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         setInterval(nextSlide, 5000);
 
      // Controle das Aulas
-        <!-- ... conteúdo da página ... -->
-
-<script>
-    function toggleAulas(id) {
-        const todas = document.querySelectorAll('.aulas-container');
-        todas.forEach(div => {
-            div.style.display = div.id === id ? 'block' : 'none';
-        });
-
-        const botoes = document.querySelectorAll('.grade-btn');
-        botoes.forEach(btn => btn.classList.remove('active'));
-
-        const botaoAtivo = Array.from(botoes).find(btn => btn.textContent.includes(id.charAt(0)));
-        if (botaoAtivo) botaoAtivo.classList.add('active');
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+    
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
     }
-</script>
+}
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
