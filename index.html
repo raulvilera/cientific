@@ -376,7 +376,7 @@ DOCTYPE html>
         </div>
     </section>
 
-   <section class="series-section" id="series">
+   section class="series-section" id="series">
   <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
   <div class="grade-selector">
     <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
@@ -389,19 +389,77 @@ DOCTYPE html>
   </div>
 </section>
 
+<!-- Blocos de Aulas por Série -->
+<div id="6ano" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-6ano-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-6ano-b2"></ul>
+</div>
+
+<div id="7ano" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-7ano-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-7ano-b2"></ul>
+</div>
+
+<div id="8ano" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-8ano-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-8ano-b2"></ul>
+</div>
+
+<div id="9ano" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-9ano-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-9ano-b2"></ul>
+</div>
+
+<div id="1serie" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-1serie-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-1serie-b2"></ul>
+</div>
+
+<div id="2serie" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-2serie-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-2serie-b2"></ul>
+</div>
+
+div id="3serie" class="aulas">
+  <h3>1º Bimestre</h3><ul id="aulas-3serie-b1"></ul>
+  <h3>2º Bimestre</h3><ul id="aulas-3serie-b2"></ul>
+</div>
+
+
+<!-- Script -->
 <script>
   function toggleAulas(id) {
-    // Esconde todos os blocos
-    document.querySelectorAll('.aulas').forEach(el => {
-      el.style.display = 'none';
-    });
-
-    // Mostra o bloco selecionado
     const bloco = document.getElementById(id);
-    if (bloco) {
-      bloco.style.display = 'block';
+    if (!bloco) return;
+
+    if (bloco.style.display === 'block') {
+      bloco.style.display = 'none';
+      return;
+    }
+
+    // Esconde todos os outros blocos
+    document.querySelectorAll('.aulas').forEach(el => el.style.display = 'none');
+
+    // Mostra o atual
+    bloco.style.display = 'block';
+
+    // Preenche as aulas se ainda não estiverem geradas
+    const b1 = document.getElementById(`aulas-${id}-b1`);
+    const b2 = document.getElementById(`aulas-${id}-b2`);
+
+    if (b1.children.length === 0 && b2.children.length === 0) {
+      for (let i = 1; i <= 28; i++) {
+        const aula1 = document.createElement('li');
+        aula1.textContent = `Aula ${i} - 1º Bimestre`;
+        b1.appendChild(aula1);
+
+        const aula2 = document.createElement('li');
+        aula2.textContent = `Aula ${i} - 2º Bimestre`;
+        b2.appendChild(aula2);
+      }
     }
   }
+</script>
 
         <<!-- Aulas do 6º ano -->
     <div class="aulas-container" id="aulasContainer6ano" style="display:none;">
