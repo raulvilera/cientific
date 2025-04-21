@@ -376,28 +376,41 @@ DOCTYPE html>
         </div>
     </section>
 
-    <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
-<section/>
+    <<section class="series-section" id="series">
+  <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
+  <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano')">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano')">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano')">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie')">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie')">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie')">3ª SÉRIE EM</button>
+  </div>
+</section>
 
+<!-- Blocos de aulas -->
+<div id="6ano" class="aulas" style="display: none;">Aulas do 6º Ano</div>
+<div id="7ano" class="aulas" style="display: none;">Aulas do 7º Ano</div>
+<div id="8ano" class="aulas" style="display: none;">Aulas do 8º Ano</div>
+<div id="9ano" class="aulas" style="display: none;">Aulas do 9º Ano</div>
+<div id="1serie" class="aulas" style="display: none;">Aulas da 1ª Série</div>
+<div id="2serie" class="aulas" style="display: none;">Aulas da 2ª Série</div>
+<div id="3serie" class="aulas" style="display: none;">Aulas da 3ª Série</div>
 
-<!-- Conteúdo extra oculto -->
-<div id="mais-6ano" class="mais-conteudo" style="display:none;"AULAS DO 6º ano</div>
-<div id="mais-7ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 7º ano</div>
-<div id="mais-8ano" class="mais-conteudo" style="display:none;"AULAS do 8º ano</div>
-<div id="mais-9ano" class="mais-conteudo" style="display:none;"AULAS do 9º ano</div>
-<div id="mais-1serie" class="mais-conteudo" style="display:none;" AULAS da 1ª série</div>
-<div id="mais-2serie" class="mais-conteudo" style="display:none;" Aulas da 2ª série</div>
-<div id="mais-3serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 3ª série</div>
+<script>
+  function toggleAulas(id) {
+    // Esconde todos os blocos de aula
+    const allAulas = document.querySelectorAll('.aulas');
+    allAulas.forEach(el => el.style.display = 'none');
+    
+    // Mostra o bloco correspondente
+    const selected = document.getElementById(id);
+    if (selected) {
+      selected.style.display = 'block';
+    }
+  }
+</script>
 
 
         <<!-- Aulas do 6º ano -->
