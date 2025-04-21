@@ -378,15 +378,17 @@ se<!DOCTYPE html>
 
     <section class="series-section" id="series">
         <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-      <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
+    <div class="grade-selector">
+            <button class="grade-btn" onclick="toggleAulas('6ano')">6º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('7ano')">7º ANO</button>
+            <button class="grade-btn"
+onclick="toggleAulas('8ano')">8º ANO</button>
+            <button class="grade-btn">9º ANO</button>
+            <button class="grade-btn">1ª SÉRIE EM</button>
+            <button class="grade-btn">2ª SÉRIE EM</button>
+            <button class="grade-btn">3ª SÉRIE EM</button>
+        </div>
+
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
@@ -738,10 +740,11 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         setInterval(nextSlide, 5000);
 
         // Controle das Aulas
-     function toggleAulas(serie, event) {
+     // Controle das Aulas
+        function toggleAulas(serie) {
     const activeContainer = document.getElementById(serie);
     const isVisible = activeContainer.style.display === 'block';
-
+    
     // Esconde todos os containers e remove a classe active dos botões
     document.querySelectorAll('.aulas-container').forEach(container => {
         container.style.display = 'none';
@@ -749,14 +752,24 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
     document.querySelectorAll('.grade-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-
+    
     // Se o container clicado não estava visível, mostra ele e adiciona classe active
     if (!isVisible) {
         activeContainer.style.display = 'block';
         event.target.classList.add('active');
     }
 }
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
         });
+
     </script>
 </body>
 </html>
