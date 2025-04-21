@@ -377,17 +377,16 @@
     </section>
 
 <section class="series-section" id="series">
-    <h2>Selecione sua Série:</h2>
-    <div class="grade-selector">
-      <button class="grade-btn" onclick="mostrar6Ano()">6º ANO</button>
-      <button class="grade-btn" onclick="mostrar7Ano()">7º ANO</button>
-      <button class="grade-btn" onclick="mostrar8Ano()">8º ANO</button>   
-      <button class="grade-btn" onclick="mostrar9Ano()">9º ANO</button> 
-      <button class="grade-btn" onclick="mostrar1SerieEM()">1ª SÉRIE EM</button>                          
-      <button class="grade-btn" onclick="mostrar2SerieEM()">2ª SÉRIE EM</button>          
-      <button class="grade-btn" onclick="mostrar3SerieEM()">3ª SÉRIE EM</button>
-    </div>
-</section>
+        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
+   <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+</div>
 
 <!-- Conteúdo extra oculto -->
 <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
