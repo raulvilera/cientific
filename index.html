@@ -889,32 +889,6 @@ function toggleAulas(id) {
             }
         });
     </script>
-<script>
-function toggleAulas(id, event) {
-    // Remove classe 'active' de todos os botões
-    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Adiciona classe 'active' ao botão clicado
-    event.target.classList.add('active');
-
-    // Oculta todos os containers de aulas
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-
-    // Exibe apenas o container correspondente
-    const container = document.getElementById(id);
-    if (container) {
-        container.style.display = 'block';
-    }
-
-    // Opcional: mostrar conteúdo extra
-    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-    const extra = document.getElementById('mais-' + id);
-    if (extra) {
-        extra.style.display = 'block';
-    }
-}
-</script>
 </body>
 </html>
