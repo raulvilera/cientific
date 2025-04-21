@@ -1016,7 +1016,7 @@ function toggleAulas(serie) {
 }
 
         // Fechar aulas ao clicar fora
-     <script>   document.addEventListener('click', function(event) {
+       document.addEventListener('click', function(event) {
             if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
                 document.querySelectorAll('.aulas-container').forEach(container => {
                     container.style.display = 'none';
