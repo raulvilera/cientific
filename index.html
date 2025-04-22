@@ -862,41 +862,4 @@ function toggleAulas(id) {
 
         setInterval(nextSlide, 5000);
 
-<script>
-    function toggleAulas(serieId, event) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
-
-        todasAulas.forEach(el => el.style.display = 'none');
-        todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-        const aulas = document.getElementById(serieId);
-        if (aulas.style.display === 'block') {
-            aulas.style.display = 'none';
-            event.target.classList.remove('active');
-        } else {
-            aulas.style.display = 'block';
-            event.target.classList.add('active');
-        }
-    }
-</script>
-
-<script src="scripts.js"></script>
-function toggleAulas(serieId, event) {
-    const todasAulas = document.querySelectorAll('.aulas-container');
-    const todosBotoes = document.querySelectorAll('.grade-btn');
-
-    todasAulas.forEach(el => el.style.display = 'none');
-    todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-    const aulas = document.getElementById(serieId);
-    if (aulas.style.display === 'block') {
-        aulas.style.display = 'none';
-        event.target.classList.remove('active');
-    } else {
-        aulas.style.display = 'block';
-        event.target.classList.add('active');
-    }
-}
-</body>
 </html>
