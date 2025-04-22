@@ -841,28 +841,62 @@ function toggleAulas(id) {
 
         setInterval(nextSlide, 5000);
 
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
 
-// No arquivo scripts.js
-
-<<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        window.toggleAulas = function(serieId, event) {
-            const todasAulas = document.querySelectorAll('.aulas-container');
-            const todosBotoes = document.querySelectorAll('.grade-btn');
-
-            todasAulas.forEach(el => el.style.display = 'none');
-            todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-            const aulas = document.getElementById(serieId);
-            if (aulas.style.display === 'block') {
-                aulas.style.display = 'none';
-                event.target.classList.remove('active');
-            } else {
-                aulas.style.display = 'block';
-                event.target.classList.add('active');
-            }
-        };
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
     });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+<script>
+function toggleAulas(id, event) {
+    // Remove classe 'active' de todos os botões
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    // Adiciona classe 'active' ao botão clicado
+    event.target.classList.add('active');
+
+    // Oculta todos os containers de aulas
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+
+    // Exibe apenas o container correspondente
+    const container = document.getElementById(id);
+    if (container) {
+        container.style.display = 'block';
+    }
+
+    // Opcional: mostrar conteúdo extra
+    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+    const extra = document.getElementById('mais-' + id);
+    if (extra) {
+        extra.style.display = 'block';
+    }
+}
 </script>
 
 
