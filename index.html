@@ -329,14 +329,14 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        window.toggleAulas = function(serieId) {
-            const todasAulas = document.querySelectorAll('.aulas-container');
+        window.toggleAulas = function(serieId, event) {
+            const todasAulas = document.querySelectorAll('.mais-conteudo');
             const todosBotoes = document.querySelectorAll('.grade-btn');
 
             todasAulas.forEach(el => el.style.display = 'none');
             todosBotoes.forEach(btn => btn.classList.remove('active'));
 
-            const aulas = document.getElementById(serieId);
+            const aulas = document.getElementById('mais-' + serieId);
             if (aulas.style.display === 'block') {
                 aulas.style.display = 'none';
                 event.target.classList.remove('active');
@@ -347,7 +347,6 @@
         };
     });
 </script>
-
 </head>
 <body>
     <!-- Abas Científicas -->
@@ -413,32 +412,30 @@
             <h1>Ciências para Todos</h1>
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
-    </section>
     <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
+    <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
+    <div class="grade-selector">
+        <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+        <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+        <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+        <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+        <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+        <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+        <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+    </div>
 
-
-<!-- Conteúdo extra oculto -->
-<div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
-<div id="mais-7ano" class="mais-conteudo" style="display:none;">AULAS DO 7º ano</div>
-<div id="mais-8ano" class="mais-conteudo" style="display:none;">AULAS DO 8º ano</div>
-<div id="mais-9ano" class="mais-conteudo" style="display:none;">AULAS DO 9º ano</div>
-<div id="mais-1serie" class="mais-conteudo" style="display:none;">AULAS DA 1ª série</div>
-<div id="mais-2serie" class="mais-conteudo" style="display:none;">AULAS DA 2ª série</div>
-<div id="mais-3serie" class="mais-conteudo" style="display:none;">AULAS DA 3ª série</div>
-
+    <!-- Conteúdo extra oculto -->
+    <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
+    <div id="mais-7ano" class="mais-conteudo" style="display:none;">AULAS DO 7º ano</div>
+    <div id="mais-8ano" class="mais-conteudo" style="display:none;">AULAS DO 8º ano</div>
+    <div id="mais-9ano" class="mais-conteudo" style="display:none;">AULAS DO 9º ano</div>
+    <div id="mais-1serie" class="mais-conteudo" style="display:none;">AULAS DA 1ª série</div>
+    <div id="mais-2serie" class="mais-conteudo" style="display:none;">AULAS DA 2ª série</div>
+    <div id="mais-3serie" class="mais-conteudo" style="display:none;">AULAS DA 3ª série</div>
+</section>
 
         <!-- 6º Ano -->
-<div class="aulas-container" id="6ano">
+<div class="aulas-container" id="mais-6ano">
     <div class="bimestre-section">
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
@@ -495,7 +492,7 @@
 
 
     <!-- 7º Ano -->
-    <div class="aulas-container" id="7ano">
+    <div class="aulas-container" id="mais-7ano">
       <div class="bimestre-section"> 
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
@@ -551,7 +548,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
 
    <<!-- 8º Ano -->
-<div class="aulas-container" id="8ano">
+<div class="aulas-container" id="mais-8ano">
     <div class="bimestre-section">
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
@@ -623,7 +620,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         </div>
 
    <<!-- 9º Ano -->
-<div class="aulas-container" id="9ano">
+<div class="aulas-container" id="mais-9ano">
     <div class="bimestre-section">
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
@@ -694,21 +691,21 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 </div>
 
 <!-- 1ª Série EM -->
-<div class="aulas-container" id="1serie" style="display: none;">
+<div class="aulas-container" id="mais-1serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 1ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
 
 <!-- 2ª Série EM -->
-<div class="aulas-container" id="2serie" style="display: none;">
+<div class="aulas-container" id=""mais-2serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 2ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
 
 <!-- 3ª Série EM -->
-<div class="aulas-container" id="3serie" style="display: none;">
+<div class="aulas-container" id=""mais-3serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 3ª Série</h3>
         <!-- Adicione as aulas aqui -->
