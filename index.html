@@ -330,7 +330,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         window.toggleAulas = function(serieId, event) {
-            const todasAulas = document.querySelectorAll('.mais-conteudo');
+            const todasAulas = document.querySelectorAll('.aulas-container'); // Corrigido aqui
             const todosBotoes = document.querySelectorAll('.grade-btn');
 
             todasAulas.forEach(el => el.style.display = 'none');
