@@ -312,22 +312,27 @@ DOCTYPE html>
 
 <script defer>
     function toggleAulas(serieId, event) {
+        // Obtém todos os contêineres de aulas e os botões de série
         const todasAulas = document.querySelectorAll('.aulas-container');
         const todosBotoes = document.querySelectorAll('.grade-btn');
 
+        // Esconde todas as aulas
         todasAulas.forEach(el => el.style.display = 'none');
+        // Remove a classe 'active' de todos os botões
         todosBotoes.forEach(btn => btn.classList.remove('active'));
 
+        // Exibe as aulas do botão clicado
         const aulas = document.getElementById(serieId);
         if (aulas.style.display === 'block') {
-            aulas.style.display = 'none';
+            aulas.style.display = 'none'; // Esconde as aulas se estiverem visíveis
             event.target.classList.remove('active');
         } else {
-            aulas.style.display = 'block';
+            aulas.style.display = 'block'; // Exibe as aulas
             event.target.classList.add('active');
         }
     }
 </script>
+
 
 </head>
 <body>
@@ -397,16 +402,17 @@ DOCTYPE html>
     </section>
 
 <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
+        <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
+        <div class="grade-selector">
+            <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+            <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+            <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+        </div>
+
 
 <!-- Conteúdo extra oculto -->
 <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
