@@ -415,17 +415,25 @@ DOCTYPE html>
         </div>
     </section>
 
-<section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
+<div class="grade-selector">
+            <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+            <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+            <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+            <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+        </div>
+
+        <!-- Divs de conteúdo das aulas -->
+        <div id="6ano" class="aulas-container hidden">Conteúdo do 6º ano</div>
+        <div id="7ano" class="aulas-container hidden">Conteúdo do 7º ano</div>
+        <div id="8ano" class="aulas-container hidden">Conteúdo do 8º ano</div>
+        <div id="9ano" class="aulas-container hidden">Conteúdo do 9º ano</div>
+        <div id="1serie" class="aulas-container hidden">Conteúdo da 1ª série</div>
+        <div id="2serie" class="aulas-container hidden">Conteúdo da 2ª série</div>
+        <div id="3serie" class="aulas-container hidden">Conteúdo da 3ª série</div>
+    </section>
 
 <!-- Conteúdo extra oculto -->
 <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
@@ -858,42 +866,27 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             </div>
         </div>
     </section>
-<script>
-    // Alterna as aulas com classe .hidden e ativa/desativa botões
-    function toggleAulas(serieId, event) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
+   <script>
+        function toggleAulas(serieId, event) {
+            const todasAulas = document.querySelectorAll('.aulas-container');
+            const todosBotoes = document.querySelectorAll('.grade-btn');
 
-        todasAulas.forEach(el => el.classList.add('hidden'));
-        todosBotoes.forEach(btn => btn.classList.remove('active'));
+            // Esconde todos os conteúdos e limpa botões
+            todasAulas.forEach(el => el.classList.add('hidden'));
+            todosBotoes.forEach(btn => btn.classList.remove('active'));
 
-        const aulas = document.getElementById(serieId);
+            const aulas = document.getElementById(serieId);
+            const isVisible = !aulas.classList.contains('hidden');
 
-        const isVisible = !aulas.classList.contains('hidden');
-
-        if (isVisible) {
-            aulas.classList.add('hidden');
-            event.target.classList.remove('active');
-        } else {
-            aulas.classList.remove('hidden');
-            event.target.classList.add('active');
+            // Alterna a visibilidade
+            if (isVisible) {
+                aulas.classList.add('hidden');
+                event.target.classList.remove('active');
+            } else {
+                aulas.classList.remove('hidden');
+                event.target.classList.add('active');
+            }
         }
-    }
-
-    // Carrossel básico
-    document.addEventListener('DOMContentLoaded', function () {
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000);
-    });
-</script>
-
+    </script>
 </body>
 </html>
