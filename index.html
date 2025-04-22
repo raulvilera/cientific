@@ -399,23 +399,28 @@ DOCTYPE html>
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
    <section class="series-section" id="series">
-    <div class="grade-selector">
-        <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE</button>
-        <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE</button>
-        <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE</button>
-</div>
-<!-- Aulas por série -->
-<div id="6ano" class="aulas-container"></div>
-<div id="7ano" class="aulas-container"></div>
-<div id="8ano" class="aulas-container"></div>
-<div id="9ano" class="aulas-container"></div>
-<div id="1serie" class="aulas-container"></div>
-<div id="2serie" class="aulas-container"></div>
-<div id="3serie" class="aulas-container"></div>
+    <!-- Botões de séries -->
+<section class="series-section" id="series">
+  <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE</button>
+  </div>
+
+  <!-- Divs de conteúdo das aulas -->
+  <div id="6ano" class="aulas-container" style="display: none;">
+    <!-- Conteúdo das aulas do 6º ano aqui -->
+  </div>
+  <div id="7ano" class="aulas-container" style="display: none;"></div>
+  <div id="8ano" class="aulas-container" style="display: none;"></div>
+  <div id="9ano" class="aulas-container" style="display: none;"></div>
+  <div id="1serie" class="aulas-container" style="display: none;"></div>
+  <div id="2serie" class="aulas-container" style="display: none;"></div>
+  <div id="3serie" class="aulas-container" style="display: none;"></div>
 </section>
 
         <!-- 6º Ano -->
