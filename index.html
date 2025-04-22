@@ -673,7 +673,86 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         <h3>Conteúdo da 3ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
+<script>
+function toggleAulas(id) {
+    const container = document.getElementById(id);
+    if (container.style.display === "none" || container.style.display === "") {
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
+    }
+}
 
+ 
+        // Controle do Carrossel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000);
+
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.addEventListener('click', function (event) {
+            const id = this.dataset.target;
+            toggleAulas(id, event);
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+            hideAllAulas();
+        }
+    });
+});
+
+function toggleAulas(id, event) {
+    const container = document.getElementById(id);
+    const isVisible = container.style.display === 'block';
+
+    hideAllAulas();
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    if (!isVisible) {
+        container.style.display = 'block';
+        event.target.classList.add('active');
+
+        const extra = document.getElementById('mais-' + id);
+        if (extra) extra.style.display = 'block';
+    }
+}
+
+function hideAllAulas() {
+    document.querySelectorAll('.aulas-container, .mais-conteudo').forEach(el => {
+        el.style.display = 'none';
+    });
+}
+</script>
  <!-- Adicione isto após a seção de séries e antes da seção de plataformas -->
 <section class="biblioteca-section" id="apostilas">
   <center><h2>LIVROS DO ESTUDANTE</h2></center>
@@ -818,85 +897,6 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             </div>
         </div>
     </section>
-<script>
-function toggleAulas(id) {
-    const container = document.getElementById(id);
-    if (container.style.display === "none" || container.style.display === "") {
-        container.style.display = "block";
-    } else {
-        container.style.display = "none";
-    }
-}
 
- 
-        // Controle do Carrossel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000);
-
-// Controle das Aulas
-        function toggleAulas(serie) {
-    const activeContainer = document.getElementById(serie);
-    const isVisible = activeContainer.style.display === 'block';
-
-    // Esconde todos os containers e remove a classe active dos botões
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    // Se o container clicado não estava visível, mostra ele e adiciona classe active
-    if (!isVisible) {
-        activeContainer.style.display = 'block';
-        event.target.classList.add('active');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.addEventListener('click', function (event) {
-            const id = this.dataset.target;
-            toggleAulas(id, event);
-        });
-    });
-
-    document.addEventListener('click', function (event) {
-        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-            hideAllAulas();
-        }
-    });
-});
-
-function toggleAulas(id, event) {
-    const container = document.getElementById(id);
-    const isVisible = container.style.display === 'block';
-
-    hideAllAulas();
-    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-
-    if (!isVisible) {
-        container.style.display = 'block';
-        event.target.classList.add('active');
-
-        const extra = document.getElementById('mais-' + id);
-        if (extra) extra.style.display = 'block';
-    }
-}
-
-function hideAllAulas() {
-    document.querySelectorAll('.aulas-container, .mais-conteudo').forEach(el => {
-        el.style.display = 'none';
-    });
-}
-</script>
 </body>
 </html>
