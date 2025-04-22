@@ -844,32 +844,25 @@ function toggleAulas(id) {
 
 // No arquivo scripts.js
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    window.toggleAulas = function(serieId, event) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
-        const aulas = document.getElementById(serieId);
-        
-        // Verifica o estado atual antes de qualquer alteração
-        const estaAtivo = aulas.style.display === 'block';
+<<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.toggleAulas = function(serieId, event) {
+            const todasAulas = document.querySelectorAll('.aulas-container');
+            const todosBotoes = document.querySelectorAll('.grade-btn');
 
-        // Reseta todos os elementos apenas se necessário
-        if (!estaAtivo) {
             todasAulas.forEach(el => el.style.display = 'none');
             todosBotoes.forEach(btn => btn.classList.remove('active'));
-        }
 
-        // Alterna o estado do elemento clicado
-        aulas.style.display = estaAtivo ? 'none' : 'block';
-        event.target.classList.toggle('active', !estaAtivo);
-        
-        // Previne conflito com outros event listeners
-        event.stopPropagation();
-    };
-});
-
-
+            const aulas = document.getElementById(serieId);
+            if (aulas.style.display === 'block') {
+                aulas.style.display = 'none';
+                event.target.classList.remove('active');
+            } else {
+                aulas.style.display = 'block';
+                event.target.classList.add('active');
+            }
+        };
+    });
 </script>
 
 
