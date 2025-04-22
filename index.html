@@ -18,50 +18,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
         }
-  .menu-toggle {
-        position: fixed;
-        top: 15px;
-        left: 20px;
-        z-index: 1100;
-        font-size: 1.8rem;
-        color: var(--cor-destaque);
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.4);
-        padding: 8px;
-        border-radius: 10px;
-    }
 
-    .side-menu {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 220px;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 1rem;
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        z-index: 1050;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        backdrop-filter: blur(6px);
-    }
-
-    .side-menu a {
-        color: var(--cor-destaque);
-        text-decoration: none;
-        font-size: 1rem;
-        transition: 0.3s;
-    }
-
-    .side-menu a:hover {
-        color: #ffffff;
-        text-shadow: 0 0 5px var(--cor-destaque);
-    }
-
-    @media (max-width: 768px) {
-        .menu-toggle {
-            font-size: 1.6rem;
         body {
             background: var(--gradiente-fundo);
             color: var(--cor-texto);
@@ -115,7 +72,7 @@
         }
 
         .navbar {
-            background: rgba(#c0c0c0 );
+            background: rgba(0,0,0,0.9);
             padding: 1rem;
             position: fixed;
             width: 100%;
@@ -141,18 +98,6 @@
         .navbar a:hover {
             text-shadow: 0 0 10px var(--cor-destaque);
         }
-<!-- Botão Menu Hamburguer -->
-<div class="menu-toggle" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-</div>
-
-<!-- Menu Lateral -->
-<div id="side-menu" class="side-menu">
-    <a href="https://efape.educacao.sp.gov.br/" target="_blank">EFAPE</a>
-    <a href="https://repositorio.educacao.sp.gov.br/" target="_blank">CMSP Repositório</a>
-    <a href="https://sed.educacao.sp.gov.br/" target="_blank">SED</a>
-    <a href="https://www.saladofuturo.educacao.sp.gov.br/" target="_blank">Sala do Futuro</a>
-</div>
 
         /* Carrossel */
         .hero-carousel {
@@ -364,7 +309,6 @@
             }
         }
     </style>
->
 </head>
 <body>
     <!-- Abas Científicas -->
@@ -430,27 +374,31 @@
             <h1>Ciências para Todos</h1>
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
-    <section class="series-section" id="series">
-    <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
-    <div class="grade-selector">
-        <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-        <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-        <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-        <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-    </div>
+    </section>
 
-    <!-- Conteúdo extra oculto -->
-    <div id="mais-6ano" class="mais-conteudo" style="display:none;">AULAS DO 6º ano</div>
-    <div id="mais-7ano" class="mais-conteudo" style="display:none;">AULAS DO 7º ano</div>
-    <div id="mais-8ano" class="mais-conteudo" style="display:none;">AULAS DO 8º ano</div>
-    <div id="mais-9ano" class="mais-conteudo" style="display:none;">AULAS DO 9º ano</div>
-    <div id="mais-1serie" class="mais-conteudo" style="display:none;">AULAS DA 1ª série</div>
-    <div id="mais-2serie" class="mais-conteudo" style="display:none;">AULAS DA 2ª série</div>
-    <div id="mais-3serie" class="mais-conteudo" style="display:none;">AULAS DA 3ª série</div>
-</section>
+    <section class="series-section" id="series">
+        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
+   <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+</div>
+
+
+
+<!-- Conteúdo extra oculto -->
+<div id="mais-6ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 6º ano</div>
+<div id="mais-7ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 7º ano</div>
+<div id="mais-8ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 8º ano</div>
+<div id="mais-9ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 9º ano</div>
+<div id="mais-1serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 1ª série</div>
+<div id="mais-2serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 2ª série</div>
+<div id="mais-3serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 3ª série</div>
+
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
@@ -480,7 +428,7 @@
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:decdadd1-f68d-414f-938a-316152108155" target="_blank">Aula 20</a></div>
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4aa579bd-f66b-4d15-947d-e993a90fb664" target="_blank">Aula 21</a></div>
         </div>
-
+    </div>
 
     <div class="bimestre-section">
         <h3>2º Bimestre</h3>
@@ -507,6 +455,8 @@
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c933a67a-ff41-4619-b634-f1d93df7f8e1" target="_blank">Aula 20</a></div>
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:229acada-43b9-4b72-b6a5-ca3c191dcf4e" target="_blank">Aula 21</a></div>
         </div>
+    </div>
+</div>
 
 
     <!-- 7º Ano -->
@@ -536,6 +486,7 @@
           <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6d9be948-0c7b-4884-a9a8-04061115fecd">Aula 20</a></div>
           <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:dc9c60fb-962c-4d5f-91c9-9eba12bb7b4f">Aula 21</a></div>
         </div>
+      </div>
 
       <div class="bimestre-section">
         <h3>2º Bimestre</h3>
@@ -565,12 +516,12 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7d31292d-1bf4-48fe-baf5-a1958619d9dc">Aula 21</a></div>
 
 
-   <<!-- 8º Ano -->
-<div class="aulas-container" id="8ano">
-    <div class="bimestre-section">
+   <div class="aulas-container" id="8ano" style="display: none;"> <!-- Adicione o style inicial -->
+    <!-- 1º Bimestre -->
+    <div class="bimestre-section"> 
         <h3>1º Bimestre</h3>
         <div class="aulas-grid">
-            <!-- Aulas 8º Ano 1º Bimestre -->
+            <!-- Aulas do 1º Bimestre -->
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:9e4aecc3-1c8d-4b48-9d4f-47ef75de3727">Aula 1</a></div>
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b65a5159-f84b-43dd-8d07-47673cd432e4">Aula 2</a></div>
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:69b3b4d0-5171-48de-88b9-45f775784107">Aula 3</a></div>
@@ -636,14 +587,14 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6ede2d26-f445-48f5-a75d-8a6f8148acd3">Aula 27</a></div>
             <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:5f7f82cd-e5d4-4828-8a0c-da73eec8d569">Aula 28</a></div>
         </div>
+    </div>
+</div>
 
-   <<!-- 9º Ano -->
-<div class="aulas-container" id="9ano">
+<!-- 9º ANO -->
+<div class="aulas-container" id="9ano" style="display: none;">
     <div class="bimestre-section">
-        <h3>1º Bimestre</h3>
-        <div class="aulas-grid">
-            <!-- Aulas 9º Ano 1º Bimestre -->
-            <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f89c9042-0f7e-4c5b-bbaa-1f8e69a36e6f">Aula 1</a></div>
+        <h3>Conteúdo do 9º Ano</h3>
+        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f89c9042-0f7e-4c5b-bbaa-1f8e69a36e6f">Aula 1</a></div>
        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:494bbc5b-9388-45e7-ab0f-804f40baea1d">Aula 2</a></div>
        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:cd9412a6-6746-4acd-92bd-d93e2afadcb4">Aula 3</a></div>
        <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2a959107-76f2-48f2-ae51-598f75f2803e">Aula 4</a></div>
@@ -678,6 +629,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         <div class="aulas-grid">
             <!-- Aulas do 2º Bimestre -->
             <div class="aula"><a
+
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:66b7bd23-44ea-4ad1-8bb7-83e5c47305b6">Aula 1</a></div>
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:e40bac28-020e-445a-b670-10b1cffda385">Aula 2</a></div>
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:00c4195c-6ae4-47cb-b23b-7174877df13b">Aula 3</a></div>
@@ -706,108 +658,34 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2e814df2-c2e6-475d-af05-6901899da9ee">Aula 26</a></div>
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:acc5fbda-c54e-4b24-afe8-496ba53f0325">Aula 27</a></div>
 <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:0ffdbf88-76fc-455d-9c09-18effbc0ba49">Aula 28</a></div>
+        </div>
+    </div>
 </div>
 
 <!-- 1ª Série EM -->
-<div class="aulas-container" id="mais-1serie" style="display: none;">
+<div class="aulas-container" id="1serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 1ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
+</div>
 
 <!-- 2ª Série EM -->
-<div class="aulas-container" id=""mais-2serie" style="display: none;">
+<div class="aulas-container" id="2serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 2ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
+</div>
 
 <!-- 3ª Série EM -->
-<div class="aulas-container" id=""mais-3serie" style="display: none;">
+<div class="aulas-container" id="3serie" style="display: none;">
     <div class="bimestre-section">
         <h3>Conteúdo da 3ª Série</h3>
         <!-- Adicione as aulas aqui -->
     </div>
-<script>
-function toggleAulas(id) {
-    const container = document.getElementById(id);
-    if (container.style.display === "none" || container.style.display === "") {
-        container.style.display = "block";
-    } else {
-        container.style.display = "none";
-    }
-}
+</div>
 
- 
-        // Controle do Carrossel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000);
-
-// Controle das Aulas
-        function toggleAulas(serie) {
-    const activeContainer = document.getElementById(serie);
-    const isVisible = activeContainer.style.display === 'block';
-
-    // Esconde todos os containers e remove a classe active dos botões
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    // Se o container clicado não estava visível, mostra ele e adiciona classe active
-    if (!isVisible) {
-        activeContainer.style.display = 'block';
-        event.target.classList.add('active');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.addEventListener('click', function (event) {
-            const id = this.dataset.target;
-            toggleAulas(id, event);
-        });
-    });
-
-    document.addEventListener('click', function (event) {
-        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-            hideAllAulas();
-        }
-    });
-});
-
-function toggleAulas(id, event) {
-    const container = document.getElementById(id);
-    const isVisible = container.style.display === 'block';
-
-    hideAllAulas();
-    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-
-    if (!isVisible) {
-        container.style.display = 'block';
-        event.target.classList.add('active');
-
-        const extra = document.getElementById('mais-' + id);
-        if (extra) extra.style.display = 'block';
-    }
-}
-
-function hideAllAulas() {
-    document.querySelectorAll('.aulas-container, .mais-conteudo').forEach(el => {
-        el.style.display = 'none';
-    });
-}
-</script>
  <!-- Adicione isto após a seção de séries e antes da seção de plataformas -->
 <section class="biblioteca-section" id="apostilas">
   <center><h2>LIVROS DO ESTUDANTE</h2></center>
@@ -953,5 +831,75 @@ function hideAllAulas() {
         </div>
     </section>
 
+    <script>
+        // Controle do Carrossel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000);
+
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+<script>
+function toggleAulas(id, event) {
+    // Remove classe 'active' de todos os botões
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    // Adiciona classe 'active' ao botão clicado
+    event.target.classList.add('active');
+
+    // Oculta todos os containers de aulas
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+
+    // Exibe apenas o container correspondente
+    const container = document.getElementById(id);
+    if (container) {
+        container.style.display = 'block';
+    }
+
+    // Opcional: mostrar conteúdo extra
+    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+    const extra = document.getElementById('mais-' + id);
+    if (extra) {
+        extra.style.display = 'block';
+    }
+}
+</script>
 </body>
 </html>
