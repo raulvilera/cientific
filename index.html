@@ -401,17 +401,24 @@ DOCTYPE html>
         </div>
     </section>
 
-<section class="series-section" id="series">
-        <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
-        <div class="grade-selector">
-            <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-            <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-            <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-            <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-            <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-            <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-            <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-        </div>
+<section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Ciências para Todos</h1>
+      <p>Plataforma educacional integrada com o currículo paulista</p>
+    </div>
+  </section>
+
+  <section class="series-section" id="series">
+    <h2>Selecione sua Série:</h2>
+    <div class="grade-selector">
+      <button class="grade-btn" onclick="mostrar6Ano()">6º ANO</button>
+      <button class="grade-btn">7º ANO</button>
+      <button class="grade-btn">8º ANO</button>
+      <button class="grade-btn">9º ANO</button>
+      <button class="grade-btn">1ª SÉRIE EM</button>
+      <button class="grade-btn">2ª SÉRIE EM</button>
+      <button class="grade-btn">3ª SÉRIE EM</button>
+    </div>
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
