@@ -481,30 +481,6 @@ DOCTYPE html>
   </div>
 </section>
 
-<script>
-  // Função para alternar a exibição das aulas de acordo com a série selecionada
-  function toggleAulas(serie, event) {
-    // Esconde todas as divs de aulas
-    const aulasContainers = document.querySelectorAll('.aulas-container');
-    aulasContainers.forEach(container => {
-      container.style.display = 'none';
-    });
-    
-    // Mostra a div correspondente à série clicada
-    const selectedContainer = document.getElementById(serie);
-    if (selectedContainer) {
-      selectedContainer.style.display = 'block';
-    }
-    
-    // Adiciona a classe "ativo" ao botão clicado e remove das demais
-    const buttons = document.querySelectorAll('.grade-btn');
-    buttons.forEach(button => {
-      button.classList.remove('ativo');
-    });
-    
-    event.target.classList.add('ativo');
-  }
-</script>
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
