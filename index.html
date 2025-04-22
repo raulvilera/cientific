@@ -310,32 +310,17 @@ DOCTYPE html>
         }
     </style>
 <script defer>
-    function toggleAulas(serieId, event) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
-
-        todasAulas.forEach(el => el.style.display = 'none');
-        todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-        const aulas = document.getElementById(serieId);
-        if (aulas.style.display === 'block') {
-            aulas.style.display = 'none';
-            event.target.classList.remove('active');
-        } else {
-            aulas.style.display = 'block';
-            event.target.classList.add('active');
-        }
-    }
-</script>
-<script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Define a função toggleAulas após o carregamento do DOM
         window.toggleAulas = function(serieId, event) {
             const todasAulas = document.querySelectorAll('.aulas-container');
             const todosBotoes = document.querySelectorAll('.grade-btn');
 
+            // Esconde todas as aulas e remove a classe 'active' dos botões
             todasAulas.forEach(el => el.style.display = 'none');
             todosBotoes.forEach(btn => btn.classList.remove('active'));
 
+            // Obtém o conteúdo específico da série e alterna sua visibilidade
             const aulas = document.getElementById(serieId);
             if (aulas.style.display === 'block') {
                 aulas.style.display = 'none';
