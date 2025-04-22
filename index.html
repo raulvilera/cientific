@@ -310,7 +310,7 @@
         }
     </style>
 <script defer>
-    function toggleAulas(serieId, event) {
+    function toggleAulas(serieId) {
         const todasAulas = document.querySelectorAll('.aulas-container');
         const todosBotoes = document.querySelectorAll('.grade-btn');
 
@@ -329,7 +329,7 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        window.toggleAulas = function(serieId, event) {
+        window.toggleAulas = function(serieId) {
             const todasAulas = document.querySelectorAll('.aulas-container');
             const todosBotoes = document.querySelectorAll('.grade-btn');
 
@@ -418,13 +418,13 @@
 <section class="series-section" id="series">
         <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
    <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas(6ano)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas(7ano)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas(8ano)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas(9ano)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas(1serie)">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas(2serie)">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas(3serie)">3ª SÉRIE EM</button>
 </div>
 
 <!-- Conteúdo extra oculto -->
