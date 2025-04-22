@@ -309,30 +309,14 @@
             }
         }
     </style>
-<script defer>
-    function toggleAulas(serieId) {
-        const todasAulas = document.querySelectorAll('.aulas-container');
-        const todosBotoes = document.querySelectorAll('.grade-btn');
 
-        todasAulas.forEach(el => el.style.display = 'none');
-        todosBotoes.forEach(btn => btn.classList.remove('active'));
-
-        const aulas = document.getElementById(serieId);
-        if (aulas.style.display === 'block') {
-            aulas.style.display = 'none';
-            event.target.classList.remove('active');
-        } else {
-            aulas.style.display = 'block';
-            event.target.classList.add('active');
-        }
-    }
-</script>
-<script>
+<<script>
     document.addEventListener('DOMContentLoaded', function() {
         window.toggleAulas = function(serieId, event) {
-            const todasAulas = document.querySelectorAll('.aulas-container'); // Corrigido aqui
+            const todasAulas = document.querySelectorAll('.mais-conteudo'); // Correção aqui
             const todosBotoes = document.querySelectorAll('.grade-btn');
 
+            // Oculta todas as seções de aula
             todasAulas.forEach(el => el.style.display = 'none');
             todosBotoes.forEach(btn => btn.classList.remove('active'));
 
