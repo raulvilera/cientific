@@ -397,10 +397,8 @@ DOCTYPE html>
         <div class="hero-content">
             <h1>Ciências para Todos</h1>
             <p>Plataforma educacional integrada com o currículo paulista</p>
-        </div>
-   <section class="series-section" id="series">
-    <!-- Botões de séries -->
-<section class="series-section" id="series">
+        <section class="series-section" id="series">
+  <!-- Botões de séries -->
   <div class="grade-selector">
     <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
     <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
@@ -413,15 +411,100 @@ DOCTYPE html>
 
   <!-- Divs de conteúdo das aulas -->
   <div id="6ano" class="aulas-container" style="display: none;">
-    <!-- Conteúdo das aulas do 6º ano aqui -->
+    <h3>Aulas do 6º ANO</h3>
+    <!-- Aqui vão as aulas específicas para o 6º ano -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 6º ANO</a></div>
+      <div class="aula"><a href="#">Aula 2 - 6º ANO</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
   </div>
-  <div id="7ano" class="aulas-container" style="display: none;"></div>
-  <div id="8ano" class="aulas-container" style="display: none;"></div>
-  <div id="9ano" class="aulas-container" style="display: none;"></div>
-  <div id="1serie" class="aulas-container" style="display: none;"></div>
-  <div id="2serie" class="aulas-container" style="display: none;"></div>
-  <div id="3serie" class="aulas-container" style="display: none;"></div>
+  
+  <div id="7ano" class="aulas-container" style="display: none;">
+    <h3>Aulas do 7º ANO</h3>
+    <!-- Aqui vão as aulas específicas para o 7º ano -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 7º ANO</a></div>
+      <div class="aula"><a href="#">Aula 2 - 7º ANO</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
+  
+  <div id="8ano" class="aulas-container" style="display: none;">
+    <h3>Aulas do 8º ANO</h3>
+    <!-- Aqui vão as aulas específicas para o 8º ano -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 8º ANO</a></div>
+      <div class="aula"><a href="#">Aula 2 - 8º ANO</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
+  
+  <div id="9ano" class="aulas-container" style="display: none;">
+    <h3>Aulas do 9º ANO</h3>
+    <!-- Aqui vão as aulas específicas para o 9º ano -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 9º ANO</a></div>
+      <div class="aula"><a href="#">Aula 2 - 9º ANO</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
+
+  <div id="1serie" class="aulas-container" style="display: none;">
+    <h3>Aulas da 1ª SÉRIE</h3>
+    <!-- Aqui vão as aulas específicas para a 1ª série -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 1ª SÉRIE</a></div>
+      <div class="aula"><a href="#">Aula 2 - 1ª SÉRIE</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
+  
+  <div id="2serie" class="aulas-container" style="display: none;">
+    <h3>Aulas da 2ª SÉRIE</h3>
+    <!-- Aqui vão as aulas específicas para a 2ª série -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 2ª SÉRIE</a></div>
+      <div class="aula"><a href="#">Aula 2 - 2ª SÉRIE</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
+  
+  <div id="3serie" class="aulas-container" style="display: none;">
+    <h3>Aulas da 3ª SÉRIE</h3>
+    <!-- Aqui vão as aulas específicas para a 3ª série -->
+    <div class="aulas-grid">
+      <div class="aula"><a href="#">Aula 1 - 3ª SÉRIE</a></div>
+      <div class="aula"><a href="#">Aula 2 - 3ª SÉRIE</a></div>
+      <!-- Adicione mais aulas conforme necessário -->
+    </div>
+  </div>
 </section>
+
+<script>
+  // Função para alternar a exibição das aulas de acordo com a série selecionada
+  function toggleAulas(serie, event) {
+    // Esconde todas as divs de aulas
+    const aulasContainers = document.querySelectorAll('.aulas-container');
+    aulasContainers.forEach(container => {
+      container.style.display = 'none';
+    });
+    
+    // Mostra a div correspondente à série clicada
+    const selectedContainer = document.getElementById(serie);
+    if (selectedContainer) {
+      selectedContainer.style.display = 'block';
+    }
+    
+    // Adiciona a classe "ativo" ao botão clicado e remove das demais
+    const buttons = document.querySelectorAll('.grade-btn');
+    buttons.forEach(button => {
+      button.classList.remove('ativo');
+    });
+    
+    event.target.classList.add('ativo');
+  }
+</script>
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
