@@ -862,43 +862,43 @@ function toggleAulas(id) {
 }
 
 
-        // Fechar aulas ao clicar fora
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-                document.querySelectorAll('.aulas-container').forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
+        <script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.addEventListener('click', function (event) {
+            const id = this.dataset.target;
+            toggleAulas(id, event);
         });
-    </script>
-<script>
-function toggleAulas(id, event) {
-    // Remove classe 'active' de todos os botões
-    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-
-    // Adiciona classe 'active' ao botão clicado
-    event.target.classList.add('active');
-
-    // Oculta todos os containers de aulas
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
     });
 
-    // Exibe apenas o container correspondente
-    const container = document.getElementById(id);
-    if (container) {
-        container.style.display = 'block';
-    }
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+            hideAllAulas();
+        }
+    });
+});
 
-    // Opcional: mostrar conteúdo extra
-    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-    const extra = document.getElementById('mais-' + id);
-    if (extra) {
-        extra.style.display = 'block';
+function toggleAulas(id, event) {
+    const container = document.getElementById(id);
+    const isVisible = container.style.display === 'block';
+
+    hideAllAulas();
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    if (!isVisible) {
+        container.style.display = 'block';
+        event.target.classList.add('active');
+
+        const extra = document.getElementById('mais-' + id);
+        if (extra) extra.style.display = 'block';
     }
 }
+
+function hideAllAulas() {
+    document.querySelectorAll('.aulas-container, .mais-conteudo').forEach(el => {
+        el.style.display = 'none';
+    });
+}
 </script>
-
-
 </body>
 </html>
