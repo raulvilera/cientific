@@ -844,21 +844,23 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             </div>
         </div>
     </section>
-   <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-        window.toggleAulas = function(serieId, event) {
-            const todasAulas = document.querySelectorAll('.aulas-container');
-            const todosBotoes = document.querySelectorAll('.grade-btn');
+   <script>
+  function toggleAulas(serie, event) {
+    const todasAsDivs = document.querySelectorAll('.aulas-container');
+    const todosOsBotoes = document.querySelectorAll('.grade-btn');
 
-            todasAulas.forEach(el => el.style.display = 'none');
-            todosBotoes.forEach(btn => btn.classList.remove('active'));
+    // Esconde todas as divs
+    todasAsDivs.forEach(div => div.style.display = 'none');
 
-            const aulas = document.getElementById(serieId);
-            aulas.style.display = 'block';
+    // Remove destaque dos botões
+    todosOsBotoes.forEach(btn => btn.classList.remove('ativo'));
 
-            event.currentTarget.classList.add('active');
-        };
-    });
+    // Mostra a div correspondente
+    document.getElementById(serie).style.display = 'block';
+
+    // Marca o botão clicado
+    event.target.classList.add('ativo');
+  }
 </script>
 </body>
 </html>
