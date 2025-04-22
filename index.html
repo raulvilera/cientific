@@ -416,13 +416,13 @@ DOCTYPE html>
     </section>
 
 <div class="grade-selector">
-  <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-<button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-<button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-<button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-<button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE</button>
-<button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE</button>
-<button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE</button>
+  <button class="grade-btn" <div id="6ano" class="aulas-container" style="display:none;">AULAS DO 6º ano</div>
+<div id="7ano" class="aulas-container" style="display:none;">AULAS DO 7º ano</div>
+<div id="8ano" class="aulas-container" style="display:none;">AULAS DO 8º ano</div>
+<div id="9ano" class="aulas-container" style="display:none;">AULAS DO 9º ano</div>
+<div id="1serie" class="aulas-container" style="display:none;">AULAS DA 1ª série</div>
+<div id="2serie" class="aulas-container" style="display:none;">AULAS DA 2ª série</div>
+<div id="3serie" class="aulas-container" style="display:none;">AULAS DA 3ª série</div>
         </div>
 
         <!-- Divs de conteúdo das aulas -->
@@ -866,27 +866,21 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
             </div>
         </div>
     </section>
-   <script>
-        function toggleAulas(serieId, event) {
-            const todasAulas = document.querySelectorAll('.aulas-container');
-            const todosBotoes = document.querySelectorAll('.grade-btn');
+   function toggleAulas(serieId, event) {
+    const todasAulas = document.querySelectorAll('.aulas-container');
+    const todosBotoes = document.querySelectorAll('.grade-btn');
 
-            // Esconde todos os conteúdos e limpa botões
-            todasAulas.forEach(el => el.classList.add('hidden'));
-            todosBotoes.forEach(btn => btn.classList.remove('active'));
+    todasAulas.forEach(el => el.style.display = 'none');
+    todosBotoes.forEach(btn => btn.classList.remove('active'));
 
-            const aulas = document.getElementById(serieId);
-            const isVisible = !aulas.classList.contains('hidden');
-
-            // Alterna a visibilidade
-            if (isVisible) {
-                aulas.classList.add('hidden');
-                event.target.classList.remove('active');
-            } else {
-                aulas.classList.remove('hidden');
-                event.target.classList.add('active');
-            }
-        }
-    </script>
+    const aulas = document.getElementById('mais-' + serieId);  // Acrescenta 'mais-' ao ID
+    if (aulas.style.display === 'block') {
+        aulas.style.display = 'none';
+        event.target.classList.remove('active');
+    } else {
+        aulas.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
 </body>
 </html>
