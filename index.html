@@ -229,6 +229,30 @@
   border-left: 5px solid #00ff88;
 }
 
+.aulas-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: rgba(255,255,255,0.1); /* fundo prata translúcido */
+  border-radius: 15px;
+}
+
+.bimestre-section {
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.bimestre-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: bold;
+  background: none;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  padding-left: 10px;
+  border-left: 5px solid #00ff88;
+}
+
 .aulas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -237,27 +261,27 @@
 
 .aula {
   background-color: rgba(255, 255, 255, 0.8);
+  color: black;
   padding: 10px;
   text-align: center;
   border-radius: 10px;
-  border: 2px solid #00ff66; /* borda verde neon */
+  border: 2px solid #00ff66;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+  cursor: pointer;
 }
-
 
 .aula a {
   text-decoration: none;
-  color: #00ff88;
+  color: black;
   font-weight: bold;
 }
 
 .aula:hover {
   background-color: #191970;
-  transform: scale(1.05);
   border-color: #00e676;
+  color: white;
 }
-
 
 .aula:active {
   transform: translateY(2px) scale(0.96);
