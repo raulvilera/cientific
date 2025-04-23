@@ -184,23 +184,25 @@
             margin: 2rem 0;
         }
 
-        .grade-btn {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--cor-destaque);
-            color: var(--cor-texto);
-            padding: 0.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            min-height: 40px;
-        }
+       .grade-btn {
+  background: transparent;
+  color: black;
+  border: 2px solid #00ff88;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #00ff88;
+}
 
-        .grade-btn.active {
-            background: var(--cor-destaque);
-            color: #1a1a2e;
-        }
+
+       .grade-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #00ff88;
+}
+
 
         .grade-btn:hover {
             transform: translateY(-3px);
