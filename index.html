@@ -425,19 +425,18 @@
             <h1>Ciências para Todos</h1>
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
-    </section>
-
     <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
-    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
-</div>
+  <center><h2>SELECIONE O ANO/SÉRIE:</h2></center>
+  <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano', this)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano', this)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano', this)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano', this)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie', this)">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie', this)">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie', this)">3ª SÉRIE EM</button>
+  </div>
+</section>
 
 
 
@@ -897,8 +896,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         setInterval(nextSlide, 5000);
 
 <script>
-// Controle das Aulas por Série
-function toggleAulas(serie, event) {
+function toggleAulas(serie, btnElement) {
     const activeContainer = document.getElementById(serie);
     const isVisible = activeContainer.style.display === 'block';
 
@@ -913,13 +911,8 @@ function toggleAulas(serie, event) {
     // Se o container clicado não estava visível, mostra ele e adiciona classe active
     if (!isVisible) {
         activeContainer.style.display = 'block';
-        event.target.classList.add('active');
+        btnElement.classList.add('active');
     }
-
-    // Oculta todos os bimestres inicialmente
-    activeContainer.querySelectorAll('.aulas-grid').forEach(grid => {
-        grid.style.display = 'none';
-    });
 }
 
 // Alternar visualização das aulas por bimestre
@@ -932,7 +925,7 @@ function toggleBimestre(h3Element) {
     }
 }
 
-// Fechar aulas ao clicar fora
+// Fecha os containers ao clicar fora
 document.addEventListener('click', function(event) {
     if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
         document.querySelectorAll('.aulas-container').forEach(container => {
