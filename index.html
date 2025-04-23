@@ -208,15 +208,14 @@
 .aulas-container {
   padding: 2rem;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #d3d3d3, #f0f0f0); /* fundo prata brilhante */
+  background-color: #1a1a1a; /* ou qualquer cor de fundo do site */
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .bimestre-section {
   margin-bottom: 3rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4); /* separação entre bimestres */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* separação entre bimestres */
 }
 
 .bimestre-section h3 {
@@ -224,10 +223,10 @@
   margin-bottom: 1rem;
   color: white;
   font-weight: bold;
-  background: transparent;
+  background: none;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  border-left: 6px solid #66ff66;
   padding-left: 10px;
+  border-left: 5px solid #00ff88;
 }
 
 .aulas-grid {
@@ -237,31 +236,29 @@
 }
 
 .aula {
-  background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;
   text-align: center;
-  border-radius: 10px;
-  border: 2px solid #00ff66; /* borda verde neon */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  border: 2px solid #00ff88;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .aula a {
   text-decoration: none;
-  color: #00695c;
+  color: #00ff88;
   font-weight: bold;
 }
 
 .aula:hover {
-  background-color: #ccffcc;
-  transform: scale(1.03);
-  border-color: #00e676;
+  transform: scale(1.04);
+  box-shadow: 0 0 10px #00ff88;
 }
 
 .aula:active {
-  transform: scale(0.97);
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); /* efeito de afundar */
+  transform: translateY(2px) scale(0.96);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
 }
         /* Biblioteca */
         .biblioteca-section {
