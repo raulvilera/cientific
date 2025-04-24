@@ -889,48 +889,55 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
         setInterval(nextSlide, 5000);
 
-            <script>
-    // Alterna visibilidade dos containers de aula ao clicar nos botões
-    function toggleAulas(id, event) {
-        // Remove a classe 'active' de todos os botões
-        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+           <script>
+  function toggleAulas(id, event) {
+    event.stopPropagation(); // impede que o clique feche imediatamente
 
-        // Adiciona a classe 'active' ao botão clicado
-        event.target.classList.add('active');
+    // Remove a classe 'active' de todos os botões
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
 
-        // Oculta todos os containers de aula
-        document.querySelectorAll('.aulas-container').forEach(container => {
-            container.style.display = 'none';
-        });
+    // Adiciona a classe 'active' ao botão clicado
+    event.target.classList.add('active');
 
-        // Exibe o container correspondente
-        const container = document.getElementById(id);
-        if (container) {
-            container.style.display = 'block';
-        }
+    // Oculta todos os containers de aulas
+    document.querySelectorAll('.aulas-container').forEach(container => {
+      container.style.display = 'none';
+    });
 
-        // Oculta todos os conteúdos extras
-        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-
-        // Exibe o conteúdo extra correspondente
-        const extra = document.getElementById('mais-' + id);
-        if (extra) {
-            extra.style.display = 'block';
-        }
+    // Exibe o container correspondente
+    const container = document.getElementById(id);
+    if (container) {
+      container.style.display = 'block';
     }
 
-    // Fecha os containers de aula ao clicar fora
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-            document.querySelectorAll('.aulas-container').forEach(container => {
-                container.style.display = 'none';
-            });
+    // Oculta todos os conteúdos extras
+    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
 
-            // Opcional: desativa botão ativo e oculta conteúdo extra
-            document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-        }
-    });
+    // Exibe o conteúdo extra correspondente
+    const extra = document.getElementById('mais-' + id);
+    if (extra) {
+      extra.style.display = 'block';
+    }
+  }
+
+  // Fecha tudo ao clicar fora
+  document.addEventListener('click', function (event) {
+    const isClickInsideContainer = event.target.closest('.aulas-container');
+    const isClickOnButton = event.target.closest('.grade-btn');
+
+    if (!isClickInsideContainer && !isClickOnButton) {
+      // Oculta todos os containers
+      document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+      });
+
+      // Remove botão ativo
+      document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+      // Oculta conteúdo extra
+      document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+    }
+  });
 </script>
 
 </body>
