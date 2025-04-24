@@ -326,17 +326,65 @@ background:rgba(0,0,0,0.9)
     </div>
   </section>
 
-  <script>
-    function mostrar6Ano() {
-      const container = document.getElementById("aulasContainer6ano");
-      container.style.display = container.style.display === "none" ? "block" : "none";
+ 
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+<script>
+function toggleAulas(id, event) {
+    // Remove classe 'active' de todos os botões
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    // Adiciona classe 'active' ao botão clicado
+    event.target.classList.add('active');
+
+    // Oculta todos os containers de aulas
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+
+    // Exibe apenas o container correspondente
+    const container = document.getElementById(id);
+    if (container) {
+        container.style.display = 'block';
     }
 
-    function mostrar7Ano() {
-      const container = document.getElementById("aulasContainer7ano");
-      container.style.display = container.style.display === "none" ? "block" : "none";
+    // Opcional: mostrar conteúdo extra
+    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+    const extra = document.getElementById('mais-' + id);
+    if (extra) {
+        extra.style.display = 'block';
     }
-  </script>
+}
+</script>
+
 </body>
 </html>
 
