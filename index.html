@@ -865,34 +865,62 @@
         setInterval(nextSlide, 5000);
 
 
-  <script>
-    // Função para alternar a exibição das aulas com base no ano
-    function toggleAulas(ano, event) {
-        let buttons = document.querySelectorAll('.grade-btn');
-        buttons.forEach(button => button.classList.remove('active'));
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
         event.target.classList.add('active');
-
-        let aulas = document.querySelectorAll('.aulas-container');
-        aulas.forEach(aula => aula.style.display = 'none');
-        document.getElementById(ano).style.display = 'block';
-
-        document.querySelectorAll('.mais-conteudo').forEach(conteudo => {
-            conteudo.style.display = 'none';
-        });
-        document.getElementById('mais-' + ano).style.display = 'block';
     }
+}
 
-    // Função para alternar bimestres
-    function toggleBimestre(bimestre, ano) {
-        let aulas = document.querySelectorAll(`#${ano} .bimestre-section`);
-        aulas.forEach(aula => {
-            if (aula.querySelector('h3').textContent.includes(bimestre)) {
-                aula.style.display = 'block';
-            } else {
-                aula.style.display = 'none';
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
             }
         });
+    </script>
+<script>
+function toggleAulas(id, event) {
+    // Remove classe 'active' de todos os botões
+    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+
+    // Adiciona classe 'active' ao botão clicado
+    event.target.classList.add('active');
+
+    // Oculta todos os containers de aulas
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+
+    // Exibe apenas o container correspondente
+    const container = document.getElementById(id);
+    if (container) {
+        container.style.display = 'block';
     }
+
+    // Opcional: mostrar conteúdo extra
+    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+    const extra = document.getElementById('mais-' + id);
+    if (extra) {
+        extra.style.display = 'block';
+    }
+}
 </script>
 
 
