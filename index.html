@@ -178,30 +178,29 @@
             margin: 0 auto;
         }
 
-        .grade-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
+       .grade-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-        .grade-btn {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid var(--cor-destaque);
-            color: var(--cor-texto);
-            padding: 0.5rem;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            min-height: 40px;
-        }
+         .grade-btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00ff88;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-        .grade-btn.active {
-            background: var(--cor-destaque);
-            color: #1a1a2e;
-        }
+       .grade-btn.active {
+      background-color: #191970;
+      color: white;
+      border: 2px solid #00e676;
+    }
 
         .grade-btn:hover {
             transform: translateY(-3px);
@@ -226,11 +225,12 @@
 }
 
 .aulas-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-  background-color: rgba(255,255,255,0.1); /* fundo prata translúcido */
-  border-radius: 15px;
-}
+      display: none;
+      padding: 2rem;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
 
 .bimestre-section {
   margin-bottom: 3rem;
@@ -422,28 +422,38 @@
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
     <section class="series-section" id="series">
-        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
-   <div class="grade-selector">
+       <h2>SELECIONE O ANO/SÉRIE:</h2>
+  <div class="grade-selector">
     <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
     <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
     <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
     <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
-    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
-    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('1ª Série', event)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('2ª Série', event)">8º ANO</button>
+  </div>
+
+  <!-- Aulas -->
+  <div id="6ano" class="aulas-container">
+    <p>Conteúdo do 6º ano aqui.</p>
+  </div>
+  <div id="7ano" class="aulas-container">
+    <p>Conteúdo do 7º ano aqui.</p>
+  </div>
+  <div id="8ano" class="aulas-container">
+    <p>Conteúdo do 8º ano aqui.</p>
+  </div>
 </div>
-
-
-
-<!-- Conteúdo extra oculto -->
-<div id="mais-6ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 6º ano</div>
-<div id="mais-7ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 7º ano</div>
-<div id="mais-8ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 8º ano</div>
-<div id="mais-9ano" class="mais-conteudo" style="display:none;">Conteúdo extra para o 9º ano</div>
-<div id="mais-1serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 1ª série</div>
-<div id="mais-2serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 2ª série</div>
-<div id="mais-3serie" class="mais-conteudo" style="display:none;">Conteúdo extra para a 3ª série</div>
-
+  <div id="9ano" class="aulas-container">
+    <p>Conteúdo do 8º ano aqui.</p>
+  </div>
+        
+  <!-- Conteúdo extra -->
+  <div id="mais-6ano" class="mais-conteudo">Extra: materiais complementares do 6º ano.</div>
+  <div id="mais-7ano" class="mais-conteudo">Extra: materiais complementares do 7º ano.</div>
+  <div id="mais-8ano" class="mais-conteudo">Extra: materiais complementares do 8º ano.</div>
+  <div id="mais-9ano" class="mais-conteudo">Extra: materiais complementares do 9º ano.</div>
+  <div id="mais-1ª Série" class="mais-conteudo">Extra: materiais complementares do 1ª Série.</div>
+  <div id="mais-2ª Série" class="mais-conteudo">Extra: materiais complementares do 2ª Série.</div>
 
         <!-- 6º Ano -->
 <div class="aulas-container" id="6ano">
@@ -889,56 +899,44 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
         setInterval(nextSlide, 5000);
 
-           <script>
-  function toggleAulas(id, event) {
-    event.stopPropagation(); // impede que o clique feche imediatamente
 
-    // Remove a classe 'active' de todos os botões
-    document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+  <script>
+    function toggleAulas(id, event) {
+      event.stopPropagation();
 
-    // Adiciona a classe 'active' ao botão clicado
-    event.target.classList.add('active');
+      // Remove 'active' de todos os botões
+      document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Oculta todos os containers de aulas
-    document.querySelectorAll('.aulas-container').forEach(container => {
-      container.style.display = 'none';
-    });
+      // Marca botão atual
+      event.target.classList.add('active');
 
-    // Exibe o container correspondente
-    const container = document.getElementById(id);
-    if (container) {
-      container.style.display = 'block';
-    }
-
-    // Oculta todos os conteúdos extras
-    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-
-    // Exibe o conteúdo extra correspondente
-    const extra = document.getElementById('mais-' + id);
-    if (extra) {
-      extra.style.display = 'block';
-    }
-  }
-
-  // Fecha tudo ao clicar fora
-  document.addEventListener('click', function (event) {
-    const isClickInsideContainer = event.target.closest('.aulas-container');
-    const isClickOnButton = event.target.closest('.grade-btn');
-
-    if (!isClickInsideContainer && !isClickOnButton) {
-      // Oculta todos os containers
+      // Oculta todas as aulas
       document.querySelectorAll('.aulas-container').forEach(container => {
         container.style.display = 'none';
       });
 
-      // Remove botão ativo
-      document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+      // Mostra aula clicada
+      const container = document.getElementById(id);
+      if (container) container.style.display = 'block';
 
       // Oculta conteúdo extra
       document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+
+      // Mostra conteúdo extra
+      const extra = document.getElementById('mais-' + id);
+      if (extra) extra.style.display = 'block';
     }
-  });
-</script>
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+        document.querySelectorAll('.aulas-container').forEach(container => {
+          container.style.display = 'none';
+        });
+        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+      }
+    });
+  </script>
 
 </body>
 </html>
