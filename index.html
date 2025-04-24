@@ -170,7 +170,6 @@
             width: 100%;
         }
 
-       
         /* Seção de Séries */
         .series-section {
             padding: 2rem 1rem;
@@ -178,111 +177,65 @@
             margin: 0 auto;
         }
 
-       .grade-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+        .grade-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
 
-         .grade-btn {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      background-color: #00ff88;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+        .grade-btn {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--cor-destaque);
+            color: var(--cor-texto);
+            padding: 0.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            min-height: 40px;
+        }
 
-       .grade-btn.active {
-      background-color: #191970;
-      color: white;
-      border: 2px solid #00e676;
-    }
+        .grade-btn.active {
+            background: var(--cor-destaque);
+            color: #1a1a2e;
+        }
 
         .grade-btn:hover {
             transform: translateY(-3px);
         }
 
+        .aulas-container {
+            margin-top: 2rem;
+            display: none;
+        }
 
-.bimestre-section {
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* separação entre bimestres */
-}
+        .bimestre-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(5px);
+        }
 
-.bimestre-section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-weight: bold;
-  background: none;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  padding-left: 10px;
-  border-left: 5px solid #00ff88;
-}
+        .aulas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.3rem;
+        }
 
-.aulas-container {
-      display: none;
-      padding: 2rem;
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
+        .aula a {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: var(--cor-destaque);
+            color: #1a1a2e;
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
 
-.bimestre-section {
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.bimestre-section h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-weight: bold;
-  background: none;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-  padding-left: 10px;
-  border-left: 5px solid #00ff88;
-}
-
-.aulas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-}
-
-.aula {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: black;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-  border: 2px solid #00ff66;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
-  cursor: pointer;
-}
-
-.aula a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-
-.aula:hover {
-  background-color: #191970;
-  border-color: #00e676;
-  color: white;
-}
-
-.aula:active {
-  transform: translateY(2px) scale(0.96);
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
-}
         /* Biblioteca */
         .biblioteca-section {
             padding: 0.4rem 0.6rem;
@@ -421,6 +374,20 @@
             <h1>Ciências para Todos</h1>
             <p>Plataforma educacional integrada com o currículo paulista</p>
         </div>
+    </section>
+
+    <section class="series-section" id="series">
+        <CENTER><h2>SELECIONE O ANO/SÉRIE:</h2><CENTER>
+   <div class="grade-selector">
+    <button class="grade-btn" onclick="toggleAulas('6ano', event)">6º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('7ano', event)">7º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('8ano', event)">8º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('9ano', event)">9º ANO</button>
+    <button class="grade-btn" onclick="toggleAulas('1serie', event)">1ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('2serie', event)">2ª SÉRIE EM</button>
+    <button class="grade-btn" onclick="toggleAulas('3serie', event)">3ª SÉRIE EM</button>
+</div>
+
     <section class="series-section" id="series">
        <h2>SELECIONE O ANO/SÉRIE:</h2>
   <div class="grade-selector">
@@ -546,29 +513,27 @@
       <div class="bimestre-section">
         <h3>2º Bimestre</h3>
         <div class="aulas-grid">
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:05105d37-751f-4588-a231-123e221d8de7">Aula 1</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c68c5b41-7426-465f-8722-83091fd224a6">Aula 2</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f149cf40-a70f-4aa9-af94-4fbf557b3a78">Aula 3</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2b0dc61d-ea28-4d10-9802-fb15282e4fdc">Aula 4</a></div> 
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6e9e7e43-75e1-4c44-a045-99b628289388">Aula 5</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:480db570-9df7-4a97-9c6e-6808a5d21384">Aula 6</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b8c6141d-2e32-4ebc-aed1-9700a6ac0c5b">Aula 7</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d9444493-34d9-49bb-8058-8b17ab7f342d">Aula 8</a></div>
-          <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4caac176-0dfa-49ac-a085-d7dab7b45865">Aula 9</a></div>
-       <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:48f30e13-4918-49d1-a7aa-09adc97f04ac">Aula10</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d813b632-3f33-4952-88b4-9f6517e0d1e7">Aula 11</a></div>
-<div class="aula"><a
-href="https://acrobat.adobe.com/id/urn:aaid:sc:US:216dd694-bb8c-4596-98d1-c9ff43e929dd">Aula 12</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:38b33ec1-9063-4609-800f-45b79ca1d895">Aula 13</a></div>
-<div class="aula"><a
-href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-81854487f98e">Aula 14</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:95c1e8b3-5c6a-4f98-87b2-825c266e333d">Aula 15</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:8c4ee52c-c2c8-487c-bdb5-84a9169c3750">Aula 16</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:95d5dda2-1374-4fa3-b86e-c3c13c987b82">Aula 17</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b96dda64-e588-4940-995d-48f52cdd3465">Aula 18</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d999c591-1e66-414b-9db1-9d9f058dfa61">Aula 19</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:afe2db6f-bafd-45cd-9e05-bbf1703502bf">Aula 20</a></div>
-<div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7d31292d-1bf4-48fe-baf5-a1958619d9dc">Aula 21</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:05105d37-751f-4588-a231-123e221d8de7">Aula 1</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:c68c5b41-7426-465f-8722-83091fd224a6">Aula 2</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:f149cf40-a70f-4aa9-af94-4fbf557b3a78">Aula 3</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:2b0dc61d-ea28-4d10-9802-fb15282e4fdc">Aula 4</a></div> 
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:6e9e7e43-75e1-4c44-a045-99b628289388">Aula 5</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:480db570-9df7-4a97-9c6e-6808a5d21384">Aula 6</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b8c6141d-2e32-4ebc-aed1-9700a6ac0c5b">Aula 7</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d9444493-34d9-49bb-8058-8b17ab7f342d">Aula 8</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:4caac176-0dfa-49ac-a085-d7dab7b45865">Aula 9</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:48f30e13-4918-49d1-a7aa-09adc97f04ac">Aula10</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d813b632-3f33-4952-88b4-9f6517e0d1e7">Aula 11</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:216dd694-bb8c-4596-98d1-c9ff43e929dd">Aula 12</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:38b33ec1-9063-4609-800f-45b79ca1d895">Aula 13</a></div>
+         <div class="aula"><a href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-81854487f98e">Aula 14</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:95c1e8b3-5c6a-4f98-87b2-825c266e333d">Aula 15</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:8c4ee52c-c2c8-487c-bdb5-84a9169c3750">Aula 16</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:95d5dda2-1374-4fa3-b86e-c3c13c987b82">Aula 17</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b96dda64-e588-4940-995d-48f52cdd3465">Aula 18</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:d999c591-1e66-414b-9db1-9d9f058dfa61">Aula 19</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:afe2db6f-bafd-45cd-9e05-bbf1703502bf">Aula 20</a></div>
+         <div class="aula"><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:7d31292d-1bf4-48fe-baf5-a1958619d9dc">Aula 21</a></div>
     
                   <!-- 8º Ano -->
 <div class="aulas-container" id="8ano">
@@ -901,42 +866,35 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
 
   <script>
-    function toggleAulas(id, event) {
-      event.stopPropagation();
+    // Função para alternar a exibição das aulas com base no ano
+    function toggleAulas(ano, event) {
+        let buttons = document.querySelectorAll('.grade-btn');
+        buttons.forEach(button => button.classList.remove('active'));
+        event.target.classList.add('active');
 
-      // Remove 'active' de todos os botões
-      document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+        let aulas = document.querySelectorAll('.aulas-container');
+        aulas.forEach(aula => aula.style.display = 'none');
+        document.getElementById(ano).style.display = 'block';
 
-      // Marca botão atual
-      event.target.classList.add('active');
-
-      // Oculta todas as aulas
-      document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-      });
-
-      // Mostra aula clicada
-      const container = document.getElementById(id);
-      if (container) container.style.display = 'block';
-
-      // Oculta conteúdo extra
-      document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-
-      // Mostra conteúdo extra
-      const extra = document.getElementById('mais-' + id);
-      if (extra) extra.style.display = 'block';
+        document.querySelectorAll('.mais-conteudo').forEach(conteudo => {
+            conteudo.style.display = 'none';
+        });
+        document.getElementById('mais-' + ano).style.display = 'block';
     }
 
-    document.addEventListener('click', function (event) {
-      if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-        document.querySelectorAll('.aulas-container').forEach(container => {
-          container.style.display = 'none';
+    // Função para alternar bimestres
+    function toggleBimestre(bimestre, ano) {
+        let aulas = document.querySelectorAll(`#${ano} .bimestre-section`);
+        aulas.forEach(aula => {
+            if (aula.querySelector('h3').textContent.includes(bimestre)) {
+                aula.style.display = 'block';
+            } else {
+                aula.style.display = 'none';
+            }
         });
-        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-      }
-    });
-  </script>
+    }
+</script>
+
 
 </body>
 </html>
