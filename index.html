@@ -899,9 +899,6 @@
         activeContainer.style.display = 'block';
         event.target.classList.add('active');
     }
-}
-
-
         // Fechar aulas ao clicar fora
         document.addEventListener('click', function(event) {
             if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
@@ -910,8 +907,7 @@
                 });
             }
         });
-    </script>
-<script>
+  
 function toggleAulas(id, event) {
     // Remove classe 'active' de todos os botões
     document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
@@ -930,12 +926,6 @@ function toggleAulas(id, event) {
         container.style.display = 'block';
     }
 
-    // Opcional: mostrar conteúdo extra
-    document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-    const extra = document.getElementById('mais-' + id);
-    if (extra) {
-        extra.style.display = 'block';
-    }
 }
 </script>
 
