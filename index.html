@@ -855,6 +855,31 @@
 
         setInterval(nextSlide, 5000);
 
+</section>
+
+
+    <section class="plataformas-section" id="plataformas">
+        <CENTER><h2>PLATAFORMAS EDUCACIONAIS</h2><CENTER>
+        <div class="plataformas-grid">
+            <div class="plataforma-card">
+                <i class="fas fa-rocket fa-3x"></i>
+                <h3>CMSP</h3>
+                <p>Acesso ao repositório oficial de conteúdos</p>
+                <a href="#" class="aula-link">Acessar</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Controle do Carrossel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
 
 // Controle das Aulas
         function toggleAulas(serie) {
