@@ -203,23 +203,21 @@
         }
 
         .aula:hover {
-  background-color: #e0f0ff;
-  transform: scale(1.03);
+  background-color: #ccffcc;
+  transform: scale(1.05);
+  border-color: #00c853;
 }
 
         .aulas-container {
   padding: 2rem;
   font-family: Arial, sans-serif;
+  background-color: #fff;
 }
-        }
-
-        .bimestre-section {
-            background: rgba(255,255,255,0.05);
-            border-radius: 18px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            backdrop-filter: blur(5px);
-        }
+       .aula a {
+  text-decoration: none;
+  color: #00796b;
+  font-weight: bold;
+} 
 
         .aulas-grid {
   display: grid;
@@ -228,12 +226,13 @@
 }
 
        .aula {
-  background-color: #f4f4f4;
+  background-color: #f4fff4;
   padding: 10px;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s, transform 0.2s;
+  border: 2px solid #00e676; /* borda verde brilhante */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.2s, border-color 0.2s;
 }
 
         /* Biblioteca */
@@ -266,10 +265,19 @@
             color: var(--cor-destaque);
         }
 
-        .bimestre-buttons {
-            display: grid;
-            gap: 0rem;
-        }
+       .bimestre-section {
+  margin-bottom: 3rem;
+}
+.bimestre-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+  border-left: 6px solid #66bb6a;
+  padding-left: 10px;
+  background-color: #e8f5e9;
+  padding: 10px;
+  border-radius: 5px;
+}
 
         /* Plataformas */
         .plataformas-section {
