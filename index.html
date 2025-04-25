@@ -1200,16 +1200,7 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
         document.querySelectorAll('.aulas-container').forEach(container => { container.style.display = 'none'; });
         const container = document.getElementById(id);
         if (container) { container.style.display = 'block'; }
-        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-        const extra = document.getElementById('mais-' + id);
-        if (extra) { extra.style.display = 'block'; }
-    }
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-            document.querySelectorAll('.aulas-container').forEach(container => {
-                container.style.display = 'none';
-            });
-        }
+       
     });
     </script>
 </body>
