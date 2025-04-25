@@ -1184,25 +1184,46 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 }
 
 
-        // Fechar aulas ao clicar fora
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-                document.querySelectorAll('.aulas-container').forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
-        });
-    </script>
-<script>
-    function toggleAulas(id, event) {
-        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        document.querySelectorAll('.aulas-container').forEach(container => { container.style.display = 'none'; });
-        const container = document.getElementById(id);
-        if (container) { container.style.display = 'block'; }
-       
+        <script>
+function toggleAulas(serie, event) {
+    const activeContainer = document.getElementById(serie);
+    const isCurrentlyVisible = activeContainer.style.display === 'block';
+    const clickedButton = event.target;
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
     });
-    </script>
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    if (!isCurrentlyVisible) {
+        activeContainer.style.display = 'block';
+        clickedButton.classList.add('active');
+
+        // Rolar suavemente até o primeiro <h3> da seção (ex: "1º Bimestre")
+        const bimestreTitle = activeContainer.querySelector('h3');
+        if (bimestreTitle) {
+            bimestreTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            activeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+}
+
+// Fecha as aulas ao clicar fora da área de conteúdo
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+        document.querySelectorAll('.aulas-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        document.querySelectorAll('.grade-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+    }
+});
+</script>
 </body>
 </html>
 
