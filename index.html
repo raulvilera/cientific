@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -220,42 +222,21 @@
             backdrop-filter: blur(5px);
         }
 
-        .bimestre-section h3 {
-            color: #ffffff;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
         .aulas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            justify-items: center;
-            align-items: center;
-            background-color: #1a1a2e;
-            padding: 1rem;
-            border-radius: 15px;
+            gap: 0.3rem;
         }
 
         .aula a {
             display: inline-block;
             padding: 10px 18px;
-            background-color: #ffffff;
-            color: #000000;
-            border: 2px solid gold;
-            box-shadow: 0 0 5px gold;
+            background-color: var(--cor-destaque);
+            color: #1a1a2e;
             text-decoration: none;
             font-size: 15px;
             border-radius: 10px;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-
-        .aula a:active {
-            transform: scale(0.95);
-            background-color: #001f3f;
-            color: #ffffff;
+            transition: background-color 0.3s;
         }
 
         /* Biblioteca */
@@ -332,7 +313,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Abas Científicas -->
     <div class="ciencia-abas">
@@ -867,6 +847,37 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
         setInterval(nextSlide, 5000);
 
+// Controle das Aulas
+        function toggleAulas(serie) {
+    const activeContainer = document.getElementById(serie);
+    const isVisible = activeContainer.style.display === 'block';
+
+    // Esconde todos os containers e remove a classe active dos botões
+    document.querySelectorAll('.aulas-container').forEach(container => {
+        container.style.display = 'none';
+    });
+    document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Se o container clicado não estava visível, mostra ele e adiciona classe active
+    if (!isVisible) {
+        activeContainer.style.display = 'block';
+        event.target.classList.add('active');
+    }
+}
+
+
+        // Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+<script>
 function toggleAulas(id, event) {
     // Remove classe 'active' de todos os botões
     document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
@@ -883,30 +894,15 @@ function toggleAulas(id, event) {
     const container = document.getElementById(id);
     if (container) {
         container.style.display = 'block';
-
-        // Se ainda não tiver aulas, gerar dinamicamente
-        if (container.childElementCount === 0 && id.includes('8ano')) {
-            for (let i = 1; i <= 28; i++) {
-                const aula = document.createElement('div');
-                aula.className = 'aula';
-                aula.innerText = `Aula ${i}`;
-                container.appendChild(aula);
-            }
-        }
-
-        // Scroll suave
-        container.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Mostrar conteúdo extra, se houver
+    // Opcional: mostrar conteúdo extra
     document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
     const extra = document.getElementById('mais-' + id);
     if (extra) {
         extra.style.display = 'block';
     }
 }
+</script>
 </body>
 </html>
-
-
-
