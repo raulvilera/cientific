@@ -1163,25 +1163,35 @@ href=”https://acrobat.adobe.com/id/urn:aaid:sc:US:5edfb1ef-3463-464f-9a44-8185
 
         setInterval(nextSlide, 5000);
 
-// Controle das Aulas
-        function toggleAulas(serie) {
-    const activeContainer = document.getElementById(serie);
-    const isVisible = activeContainer.style.display === 'block';
-
-    // Esconde todos os containers e remove a classe active dos botões
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    // Se o container clicado não estava visível, mostra ele e adiciona classe active
-    if (!isVisible) {
-        activeContainer.style.display = 'block';
+// Fechar aulas ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+                document.querySelectorAll('.aulas-container').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+        });
+    </script>
+<script>
+    function toggleAulas(id, event) {
+        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
+        document.querySelectorAll('.aulas-container').forEach(container => { container.style.display = 'none'; });
+        const container = document.getElementById(id);
+        if (container) { container.style.display = 'block'; }
+        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
+        const extra = document.getElementById('mais-' + id);
+        if (extra) { extra.style.display = 'block'; }
     }
-}
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+            document.querySelectorAll('.aulas-container').forEach(container => {
+                container.style.display = 'none';
+            });
+        }
+    });
+    </script>
+
 
 
         <script>
