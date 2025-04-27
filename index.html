@@ -1152,77 +1152,60 @@
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000);
-
-
-
-
-    function toggleAulas(id, event) {
-        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        document.querySelectorAll('.aulas-container').forEach(container => { container.style.display = 'none'; });
-        const container = document.getElementById(id);
-        if (container) { container.style.display = 'block'; }
-        document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
-        const extra = document.getElementById('mais-' + id);
-        if (extra) { extra.style.display = 'block'; }
-    }
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
-            document.querySelectorAll('.aulas-container').forEach(container => {
-                container.style.display = 'none';
-            });
-        }
-    });
-    </script>
-
-
-
         <script>
-function toggleAulas(serie, event) {
-    const activeContainer = document.getElementById(serie);
-    const isCurrentlyVisible = activeContainer.style.display === 'block';
-    const clickedButton = event.target;
+    // Controle do Carrossel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
 
-    // Esconde todos os containers e remove a classe active dos botões
-    document.querySelectorAll('.aulas-container').forEach(container => {
-        container.style.display = 'none';
-    });
-    document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    if (!isCurrentlyVisible) {
-        activeContainer.style.display = 'block';
-        clickedButton.classList.add('active');
-
-        // Rolar suavemente até o primeiro <h3> da seção (ex: "1º Bimestre")
-        const bimestreTitle = activeContainer.querySelector('h3');
-        if (bimestreTitle) {
-            bimestreTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            activeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
     }
-}
 
-// Fecha as aulas ao clicar fora da área de conteúdo
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+    setInterval(nextSlide, 5000);
+
+    // Função para alternar entre as aulas
+    function toggleAulas(serie, event) {
+        const activeContainer = document.getElementById(serie);
+        const isCurrentlyVisible = activeContainer && activeContainer.style.display === 'block';
+        const clickedButton = event.target;
+
+        // Esconde todos os containers e remove a classe active dos botões
         document.querySelectorAll('.aulas-container').forEach(container => {
             container.style.display = 'none';
         });
         document.querySelectorAll('.grade-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-  
+
+        if (activeContainer && !isCurrentlyVisible) {
+            activeContainer.style.display = 'block';
+            clickedButton.classList.add('active');
+
+            // Rolar suavemente até o primeiro <h3> da seção (ex: "1º Bimestre")
+            const bimestreTitle = activeContainer.querySelector('h3');
+            if (bimestreTitle) {
+                bimestreTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                activeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    // Fecha as aulas ao clicar fora da área de conteúdo
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
+            document.querySelectorAll('.aulas-container').forEach(container => {
+                container.style.display = 'none';
+            });
+            document.querySelectorAll('.grade-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+    });
 </script>
+
 </body>
 </html>
 
