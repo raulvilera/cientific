@@ -1197,24 +1197,35 @@
         });
     </script>
 <script>
+    <script>
     function toggleAulas(id, event) {
         document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
-        document.querySelectorAll('.aulas-container').forEach(container => { container.style.display = 'none'; });
+        document.querySelectorAll('.aulas-container').forEach(container => { 
+            container.style.display = 'none'; 
+        });
         const container = document.getElementById(id);
-        if (container) { container.style.display = 'block'; }
+        if (container) { 
+            container.style.display = 'block'; 
+        }
         document.querySelectorAll('.mais-conteudo').forEach(div => div.style.display = 'none');
         const extra = document.getElementById('mais-' + id);
-        if (extra) { extra.style.display = 'block'; }
+        if (extra) { 
+            extra.style.display = 'block'; 
+        }
     }
+
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.aulas-container') && !event.target.closest('.grade-btn')) {
             document.querySelectorAll('.aulas-container').forEach(container => {
                 container.style.display = 'none';
             });
+            document.querySelectorAll('.grade-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
         }
     });
-    </script>
+</script>
 
 </body>
 </html>
